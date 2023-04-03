@@ -249,6 +249,18 @@
       ],
       "Hash": "5666d0758c6dea426c81b3f644c28eaf"
     },
+    "Cairo": {
+      "Package": "Cairo",
+      "Version": "1.6-0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "grDevices",
+        "graphics"
+      ],
+      "Hash": "60aada7beac23aa3e9b219485d6b2da8"
+    },
     "DBI": {
       "Package": "DBI",
       "Version": "1.1.3",
