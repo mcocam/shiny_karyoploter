@@ -14,11 +14,14 @@ karyoploter_theme = bs_theme(
 #' @export
 ui <- function(id) {
   ns <- NS(id)
-  navbarPage(
+  page_navbar(
     theme = karyoploter_theme,
     title = "KaryoploteR",
     inverse = FALSE,
-    nav("Link 1"),
+
+    # Content modules
+    nav("Link 1",
+    textOutput("message")),
     nav("Link 2")
 
   )
