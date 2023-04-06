@@ -30,7 +30,7 @@ server = function(id,karyo_params){
     options(shiny.usecairo=TRUE)
 
     o$img = downloadHandler(
-      filename = function(){paste0("prova.",i$format)},
+      filename = function(){paste0("karyoplot.",i$format)},
       content = function(file){
         if(i$format == "png"){
           CairoPNG(file)

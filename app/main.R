@@ -1,8 +1,7 @@
 box::use(
-  shiny[moduleServer, NS,a,renderPlot,plotOutput,reactive,p],
+  shiny[moduleServer, NS,a,renderPlot,plotOutput,reactive,p,callModule],
   bslib[page_navbar,nav,bs_theme,font_google],
-  app/view/app,
-  karyoploteR[plotKaryotype]
+  app/view/karyoplot
 )
 
 # App main theme
@@ -17,6 +16,8 @@ karyoploter_theme = bs_theme(
 ui <- function(id) {
   ns <- NS(id)
   page_navbar(
+
+    # Theme and styles
     theme = karyoploter_theme,
     title = a(href="/",
               style="text-decoration: none;color:black",
@@ -24,11 +25,16 @@ ui <- function(id) {
     inverse = FALSE,
 
     # Content modules
-    nav("App",
-    app$ui(ns("plot"))
+
+    ## Draw karyoploteR
+    nav("karyoploteR",
+      karyoplot$ui(ns("layout"))
     ),
+
+    ## Get started
     nav("Get started",
-    p("Tutorials, examples and more, much more"))
+      p("Tutorials, examples and more, much more")
+    )
 
   )
 }
@@ -37,13 +43,16 @@ ui <- function(id) {
 server <- function(id) {
   moduleServer(id, function(i, o, s) {
 
+    karyoplot$server("layout",karyo_params)
+
+
     karyo_params = reactive({
-      params = list() # Input params
+      params = list(
+        genome = i[["layout-sidebar-genomes-genome"]]
+      ) # Input params
     })
 
     input_data = reactive({}) # Input user data
-
-    app$server("plot",karyo_params)
 
   })
 }
