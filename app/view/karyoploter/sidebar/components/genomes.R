@@ -3,7 +3,8 @@ box::use(
     moduleServer,
     NS,
     selectInput,
-    reactive
+    reactive,
+    span
     ]
 )
 
@@ -27,7 +28,7 @@ ui = function(id){
   ns = NS(id)
     selectInput(
         ns("genome"),
-        "Genome:",
+        span(class="text-dark fw-bold",  "Genome:"),
         available_genomes,
         selected = "hg19"
     )

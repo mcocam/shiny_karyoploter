@@ -2,11 +2,12 @@ box::use(
     shiny[
         moduleServer,
         NS,
-        sidebarLayout
+        sidebarLayout,
+        reactive
         ],
 
-    app/view/sidebar/sidebar,
-    app/view/main_panel/main_panel
+    app/view/karyoploter/sidebar/sidebar,
+    app/view/karyoploter/main_panel/main_panel
 )
 
 #' @export
@@ -23,6 +24,16 @@ ui = function(id){
 #' @export
 server = function(id,karyo_params){
     moduleServer(id,function(i,o,s){
+
+
+
+    karyo_params = reactive({
+      params = list(
+        genome = i[["sidebar-genomes-genome"]]
+      ) # Input params
+    })
+
+    input_data = reactive({}) # Input user data
 
         sidebar$server("sidebar",karyo_params)
         main_panel$server("mainPanel",karyo_params)

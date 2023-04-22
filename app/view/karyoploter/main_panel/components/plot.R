@@ -5,7 +5,6 @@ box::use(
     renderPlot,
     plotOutput],
 
-    bslib[card],
     karyoploteR[plotKaryotype],
 
 )
@@ -14,7 +13,7 @@ box::use(
 ui = function(id){
     ns = NS(id)
 
-    card(class="mt-3 mt-sm-0", plotOutput(ns("plot"),height = "80vh"))
+    plotOutput(ns("plot"))
 
 }
 
