@@ -9,10 +9,14 @@ A live demo can be found on: <a href="https://mcocam.shinyapps.io/karyo_1/" targ
 First, download the project and set working directory on it.
 
 Then run 
-  · renv::activate()
-  · renv::install()
+```
+renv::activate()
+renv::install()
+```
   
 And, finally, run shiny:
-  · shiny::runApp()
+```
+shiny::runApp()
+```
 
 # Deployment
