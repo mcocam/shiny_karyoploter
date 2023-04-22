@@ -7,7 +7,8 @@ box::use(
 
     bslib[card,navs_tab_card,nav,card_body_fill],
 
-    app/view/karyoploter/main_panel/components/plot
+    app/view/karyoploter/main_panel/components/plot,
+    app/view/karyoploter/main_panel/components/code
 )
 
 #' @export
@@ -28,7 +29,7 @@ ui = function(id){
                   ),
                   nav(
                     "Code",
-                    "Here: textOutput with the code"
+                    code$ui(ns("code"))
                   )
     )
   )
@@ -41,6 +42,7 @@ server = function(id,karyo_params){
   moduleServer(id,function(i,o,s){
 
     plot$server("plot",karyo_params)
+    code$server("code",karyo_params)
 
   })
 }

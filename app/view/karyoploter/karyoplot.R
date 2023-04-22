@@ -7,7 +7,9 @@ box::use(
         ],
 
     app/view/karyoploter/sidebar/sidebar,
-    app/view/karyoploter/main_panel/main_panel
+    app/view/karyoploter/main_panel/main_panel,
+
+    app/logic/find_inputs[find_inputs]
 )
 
 #' @export
@@ -26,11 +28,18 @@ server = function(id,karyo_params){
     moduleServer(id,function(i,o,s){
 
 
-
+    # Base plotKaryotype params
     karyo_params = reactive({
-      params = list(
-        genome = i[["sidebar-genomes-genome"]]
-      ) # Input params
+
+        params = list()
+
+        argument_values = find_inputs(i,"kparams")
+
+        for (argument in names(argument_values) ){
+            params[argument] = i[[argument_values[[argument]]]]
+        }
+
+        params
     })
 
     input_data = reactive({}) # Input user data

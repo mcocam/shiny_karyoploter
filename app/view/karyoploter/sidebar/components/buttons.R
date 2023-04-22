@@ -27,7 +27,7 @@ ui = function(id){
       class="row",
       div(class="col",
       div(class="d-flex justify-content-around",
-        actionButton(ns("update"),label="Update plot",icon=icon("arrows-rotate")),
+        actionButton(ns("update"),label="Update panels",icon=icon("arrows-rotate")),
         downloadButton(ns("img"),label="Export as SVG")),
       )
     )

@@ -27,7 +27,7 @@ available_genomes = list(
 ui = function(id){
   ns = NS(id)
     selectInput(
-        ns("genome"),
+        ns("kparams_genome"),
         span(class="text-dark fw-bold",  "Genome:"),
         available_genomes,
         selected = "hg19"
@@ -36,11 +36,11 @@ ui = function(id){
 }
 
 #' @export
-server = function(id,karyo_params){
+server = function(id){
   moduleServer(id,function(i,o,s){
 
     selected_genome = reactive({
-      i$genome
+      i$kparams_genome
     })
 
   })
