@@ -12,7 +12,7 @@ box::use(
 available_types = list(
         "1) Vertical ideogram (1 panel above)" = 1,
         "2) V. ideogram (1 p. above, 1 below)" = 2,
-        "3) Horitzontal ideogram (muti panel)" = 3,
+        "3) Horizontal ideogram (muti panel)" = 3,
         "4) H. ideogram (panels above)" = 4,
         "5) H. ideogram (panels below)" = 5
 )
