@@ -5,4 +5,6 @@ library(Cairo)        # Export plot as image
 library(dplyr)        # Manipulate data
 library(karyoploteR)  # Generate karyotype plots
 library(rhino)        # Shiny Framework
-library(grDevices)
+library(grDevices)    # Capturing plots
+library(shinyAce)     # For code rendering
+library(shiny)        # Shiny framework
