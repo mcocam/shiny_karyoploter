@@ -4,7 +4,8 @@ box::use(
     NS,
     sidebarPanel,
     div,
-    hr],
+    hr,
+    reactive],
 
     app/view/karyoploter/sidebar/components/genomes/genomes,
     app/view/karyoploter/sidebar/components/genomes/plot_type,
@@ -37,16 +38,14 @@ ui = function(id){
 }
 
 #' @export
-server = function(id,karyo_params){
+server = function(id,karyo_params,selected_genome){
   moduleServer(id,function(i,o,s){
 
     genomes$server("genomes")
     plot_type$server("plot_type")
-    chromosomes$server("chromosomes")
+    chromosomes$server("chromosomes",selected_genome)
     panels$server("panels")
     buttons$server("btn",karyo_params)
-
-
 
   })
 }

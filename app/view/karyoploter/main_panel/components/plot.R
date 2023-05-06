@@ -22,12 +22,14 @@ server = function(id,karyo_params){
   moduleServer(id,function(i,o,s){
 
     o$plot = renderPlot({
-        plot = do.call(plotKaryotype,karyo_params())
-        plot
-        })
-
-
-
+      tryCatch({
+          plot = do.call(plotKaryotype,karyo_params())
+          plot
+        },
+        error = function(c) "error",
+        warning = function(c) "warning",
+        message = function(c) "message")
+      })
   })
 }
 

@@ -42,9 +42,13 @@ server = function(id,karyo_params){
         params
     })
 
+    selected_genome = reactive({
+        i[["sidebar-genomes-kparams_genome"]]
+    })
+
     input_data = reactive({}) # Input user data
 
-        sidebar$server("sidebar",karyo_params)
+        sidebar$server("sidebar",karyo_params,selected_genome)
         main_panel$server("mainPanel",karyo_params)
 
     })
