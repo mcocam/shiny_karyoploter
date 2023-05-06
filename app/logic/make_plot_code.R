@@ -1,6 +1,5 @@
 box::use(
-    glue[glue],
-    stringr[str_replace]
+    glue[glue]
 )
 
 
