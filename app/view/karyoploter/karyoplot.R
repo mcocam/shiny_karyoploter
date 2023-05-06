@@ -27,24 +27,28 @@ ui = function(id){
 server = function(id,karyo_params){
     moduleServer(id,function(i,o,s){
 
-
+    
     # Base plotKaryotype params
     karyo_params = reactive({
 
         params = list()
 
-        argument_values = find_inputs(i,"kparams")
+        argument_values = find_inputs(i,".*-kparams_(.*)")
 
         for (argument in names(argument_values) ){
-            params[argument] = i[[argument_values[[argument]]]]
+            params[[argument]] = unlist(i[[argument_values[[argument]]]])
         }
 
         params
     })
 
+    selected_genome = reactive({
+        i[["sidebar-genomes-kparams_genome"]]
+    })
+
     input_data = reactive({}) # Input user data
 
-        sidebar$server("sidebar",karyo_params)
+        sidebar$server("sidebar",karyo_params,selected_genome)
         main_panel$server("mainPanel",karyo_params)
 
     })

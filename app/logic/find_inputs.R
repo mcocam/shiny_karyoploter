@@ -12,11 +12,10 @@ box::use(
 find_inputs = function(input, expression){
 
     input_names = names(input)
-    regexp = paste0(".*-kparams_(.*)")
     inputs_found = list()
 
     for (input_name in input_names){
-        match = str_match_all(input_name,regexp)
+        match = str_match_all(input_name,expression)
         n_matches = length(match[[1]])
 
         if(n_matches == 2){
@@ -25,14 +24,6 @@ find_inputs = function(input, expression){
             input_name = match[[1]][1]
 
             inputs_found[argument] = input_name
-
-            if(argument == "plot.type"){
-                value = as.numeric(input[[input_name]])
-
-                if(value >= 3){
-                    inputs_found["srt"] = "90"
-                }
-            }
 
         }
     }
