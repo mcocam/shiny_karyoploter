@@ -9,7 +9,8 @@ box::use(
     updateSelectizeInput,
     isolate
     ],
-    karyoploteR[plotKaryotype]
+    karyoploteR[plotKaryotype],
+    grDevices[dev.off]
 )
 
 available_chromosomes = c("chr1",
@@ -57,6 +58,7 @@ server = function(id,genome){
     observe({
       genome = genome()
       chromosomes = plotKaryotype(genome)$chromosomes
+      dev.off()
       updateSelectizeInput(
         s,
         "kparams_chromosomes",
