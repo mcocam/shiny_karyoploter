@@ -29,7 +29,8 @@ ui = function(id){
           ns("add_field"),
           style   = "border: 0px",
           label   = NULL,
-          icon("circle-plus")
+          icon("circle-plus"),
+          onclick="App.enablePanelButton()"
         )
       )
     )

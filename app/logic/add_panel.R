@@ -1,11 +1,21 @@
 
 box::use(
-    shiny[insertUI,removeUI,div,p,actionButton,icon,NS],
-    bslib[card,card_body_fill]
+    shiny[insertUI,removeUI,div,p,actionButton,icon,NS, selectInput, conditionalPanel],
+    bslib[card,card_body_fill],
+    htmlTable[htmlTable],
+    shiny[tags, HTML]
 )
 
 #' @export
 add_panel = function(id){
+
+    panel_type_choices = c(
+        "Bars (plot)" = "plot_bar",
+        "Point (plot)" = "plot_points",
+        "lines (plot)" = "plot_lines"
+    )
+
+    type_selector = paste0(id, "_type")
 
     div(
         id = id,
@@ -13,7 +23,10 @@ add_panel = function(id){
         div(
             class = "card-body",
             div(
-                p("Inputs to customize plot. TODO")
+                selectInput(type_selector,
+                label = "Plot type",
+                choices = panel_type_choices,
+                selected = "plot_bar")
             ),
             div(
                 class="text-end mt-3",
@@ -21,10 +34,5 @@ add_panel = function(id){
             )
         )
     )
-
-}
-
-#' @export 
-remove_panel = function(id){
 
 }

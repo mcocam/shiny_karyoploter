@@ -14,6 +14,8 @@ box::use(
     app/view/karyoploter/sidebar/components/panels/panels,
 
     app/view/karyoploter/sidebar/components/footer_buttons/buttons,
+
+    app/view/karyoploter/sidebar/components/panels/markers
 )
 
 #' @export
@@ -28,7 +30,12 @@ ui = function(id){
 
       hr(),
 
-      div(class="my-3 fw-bold text-dark text-center","Add panels"),
+      div(class="my-3 fw-bold text-dark text-center","Markers (optional)"),
+      markers$ui(ns("markers")),
+
+      hr(),
+
+      div(class="my-3 fw-bold text-dark text-center","Add plot"),
       panels$ui(ns("panels")),
 
       hr(),
@@ -46,6 +53,7 @@ server = function(id,karyo_params,selected_genome){
     chromosomes$server("chromosomes",selected_genome)
     panels$server("panels")
     buttons$server("btn",karyo_params)
+    markers$server("markers")
 
   })
 }
