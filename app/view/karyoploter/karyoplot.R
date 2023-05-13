@@ -41,6 +41,10 @@ server = function(id,karyo_params){
             params[[argument]] = unlist(i[[argument_values[[argument]]]])
         }
 
+        if(params[["plot.type"]] %in% c("3", "4", "5")){
+            params[["srt"]] = "90"
+        }
+
         params
     })
 

@@ -5,7 +5,7 @@ box::use(
     renderPlot,
     plotOutput],
 
-    karyoploteR[plotKaryotype],
+    karyoploteR[plotKaryotype, kpAddChromosomeNames],
 
 )
 
@@ -24,9 +24,10 @@ server = function(id,karyo_params){
     o$plot = renderPlot({
       tryCatch({
           plot = do.call(plotKaryotype,karyo_params())
+
           plot
         },
-        error = function(c) "error",
+        error = function(c) print(c),
         warning = function(c) "warning",
         message = function(c) "message")
       })
