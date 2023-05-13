@@ -3,7 +3,9 @@ box::use(
         moduleServer,
         NS,
         sidebarLayout,
-        reactive
+        reactive,
+        observeEvent,
+        observe
         ],
 
     app/view/karyoploter/sidebar/sidebar,
@@ -14,6 +16,7 @@ box::use(
 
 #' @export
 ui = function(id){
+
     ns = NS(id)
 
     sidebarLayout(
@@ -27,7 +30,6 @@ ui = function(id){
 server = function(id,karyo_params){
     moduleServer(id,function(i,o,s){
 
-    
     # Base plotKaryotype params
     karyo_params = reactive({
 
