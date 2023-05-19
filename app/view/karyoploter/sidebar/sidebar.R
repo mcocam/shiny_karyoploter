@@ -5,7 +5,9 @@ box::use(
     sidebarPanel,
     div,
     hr,
-    reactive],
+    reactive,
+    tabsetPanel,
+    tabPanel],
 
     app/view/karyoploter/sidebar/components/genomes/genomes,
     app/view/karyoploter/sidebar/components/genomes/plot_type,
@@ -30,13 +32,19 @@ ui = function(id){
 
       hr(),
 
-      div(class="my-3 fw-bold text-dark text-center","Markers (optional)"),
-      markers$ui(ns("markers")),
-
-      hr(),
-
-      div(class="my-3 fw-bold text-dark text-center","Add plot"),
-      panels$ui(ns("panels")),
+      tabsetPanel(id = ns("user_data"),
+      
+        tabPanel(
+          "Markers",
+            div(class="my-3 fw-bold text-dark text-center","Markers (optional)"),
+            markers$ui(ns("markers"))
+        ),
+        tabPanel(
+          "Plots",
+          div(class="my-3 fw-bold text-dark text-center","Add plot"),
+          panels$ui(ns("panels"))
+        )
+      ),
 
       hr(),
 
