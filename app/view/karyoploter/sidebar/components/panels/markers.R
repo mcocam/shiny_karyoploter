@@ -7,9 +7,14 @@ box::use(
     div,
     p,
     icon,
-    observe,
     tags,
-    fileInput],
+    fileInput,
+    observeEvent,
+    req,
+    insertUI,
+    removeUI],
+  tools[file_ext],
+  data.table[fread]
 )
 
 #' @export
@@ -63,7 +68,8 @@ ui = function(id){
                     accept = c("text/csv",
                          "text/comma-separated-values,text/plain",
                          ".csv"))
-                )
+                ),
+                div(id = "marker_feedback")
             )
         )
     )
@@ -71,10 +77,46 @@ ui = function(id){
 }
 
 #' @export
-server = function(id){
+server = function(id, marker_data){
   moduleServer(id,function(i,o,s){
 
     ns = s$ns
+
+    observeEvent(i$marker_file,{
+      req(i$marker_file)
+
+      tryCatch(
+        {
+          file_path = i$marker_file$datapath
+          
+          if(file_ext(file_path) != "csv"){
+            unlink(file_path)
+            stop("Invalid file")
+          }
+
+          data = fread(file_path, sep=";", 
+                        colClasses = c( chr = "character", 
+                                        pos = "integer", 
+                                        labels = "character")
+                      )
+
+          if(length(data) > 0){
+            marker_data(data)
+            removeUI("#marker_feedback > p", multiple = T)
+          }else{
+            stop("Invalid file")
+          }
+
+        },
+        error = function(e){
+          print(e)
+          insertUI(
+            selector = "#marker_feedback", 
+            ui = p("Invalid file, please check the expected format",
+                  class="text-danger"))
+        }
+        )
+    })
 
   })
 }

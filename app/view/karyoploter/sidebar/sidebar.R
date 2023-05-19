@@ -5,7 +5,9 @@ box::use(
     sidebarPanel,
     div,
     hr,
-    reactive],
+    reactive,
+    tabsetPanel,
+    tabPanel],
 
     app/view/karyoploter/sidebar/components/genomes/genomes,
     app/view/karyoploter/sidebar/components/genomes/plot_type,
@@ -30,13 +32,19 @@ ui = function(id){
 
       hr(),
 
-      div(class="my-3 fw-bold text-dark text-center","Markers (optional)"),
-      markers$ui(ns("markers")),
-
-      hr(),
-
-      div(class="my-3 fw-bold text-dark text-center","Add plot"),
-      panels$ui(ns("panels")),
+      tabsetPanel(id = ns("user_data"),
+      
+        tabPanel(
+          "Markers",
+            div(class="my-3 fw-bold text-dark text-center","Markers (optional)"),
+            markers$ui(ns("markers"))
+        ),
+        tabPanel(
+          "Plots",
+          div(class="my-3 fw-bold text-dark text-center","Add plot"),
+          panels$ui(ns("panels"))
+        )
+      ),
 
       hr(),
 
@@ -45,7 +53,7 @@ ui = function(id){
 }
 
 #' @export
-server = function(id,karyo_params,selected_genome){
+server = function(id,karyo_params,selected_genome, marker_data){
   moduleServer(id,function(i,o,s){
 
     genomes$server("genomes")
@@ -53,7 +61,7 @@ server = function(id,karyo_params,selected_genome){
     chromosomes$server("chromosomes",selected_genome)
     panels$server("panels")
     buttons$server("btn",karyo_params)
-    markers$server("markers")
+    markers$server("markers", marker_data)
 
   })
 }
