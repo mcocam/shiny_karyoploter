@@ -23,11 +23,19 @@ server = function(id,karyo_params, marker_data){
 
     o$plot = renderPlot({
       tryCatch({
+
+          params = karyo_params()
           marker_data = marker_data()
           plot = do.call(plotKaryotype,karyo_params())
 
           if(!is.null(marker_data)){
-            kpPlotMarkers(plot, chr=marker_data$chr, x=marker_data$pos, labels=marker_data$labels)
+            if(params[["plot.type"]] %in% c("3", "4", "5")){
+              kpPlotMarkers(plot, chr=marker_data$chr, x=marker_data$pos, labels=marker_data$labels)
+
+            }else{
+              kpPlotMarkers(plot, chr=marker_data$chr, x=marker_data$pos, labels=marker_data$labels, text.orientation = "horizontal")
+            }
+            
           }
 
           plot

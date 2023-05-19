@@ -94,11 +94,7 @@ server = function(id, marker_data){
             stop("Invalid file")
           }
 
-          data = fread(file_path, sep=";", 
-                        colClasses = c( chr = "character", 
-                                        pos = "integer", 
-                                        labels = "character")
-                      )
+          data = fread(file_path, sep=";")
 
           if(length(data) > 0){
             marker_data(data)
