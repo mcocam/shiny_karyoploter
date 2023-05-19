@@ -53,7 +53,7 @@ ui = function(id){
 }
 
 #' @export
-server = function(id,karyo_params,selected_genome){
+server = function(id,karyo_params,selected_genome, marker_data){
   moduleServer(id,function(i,o,s){
 
     genomes$server("genomes")
@@ -61,7 +61,7 @@ server = function(id,karyo_params,selected_genome){
     chromosomes$server("chromosomes",selected_genome)
     panels$server("panels")
     buttons$server("btn",karyo_params)
-    markers$server("markers")
+    markers$server("markers", marker_data)
 
   })
 }

@@ -5,7 +5,8 @@ box::use(
         sidebarLayout,
         reactive,
         observeEvent,
-        observe
+        observe,
+        reactiveVal
         ],
 
     app/view/karyoploter/sidebar/sidebar,
@@ -48,14 +49,14 @@ server = function(id,karyo_params){
         params
     })
 
+    marker_data = reactiveVal(NULL) # Marker data initialization
+
     selected_genome = reactive({
         i[["sidebar-genomes-kparams_genome"]]
     })
 
-    input_data = reactive({}) # Input user data
-
-        sidebar$server("sidebar",karyo_params,selected_genome)
-        main_panel$server("mainPanel",karyo_params)
+        sidebar$server("sidebar",karyo_params,selected_genome, marker_data)
+        main_panel$server("mainPanel",karyo_params, marker_data)
 
     })
 }

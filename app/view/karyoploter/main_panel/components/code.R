@@ -29,7 +29,7 @@ ui = function(id){
 }
 
 #' @export
-server = function(id,karyo_params){
+server = function(id,karyo_params, marker_data){
   moduleServer(id,function(i,o,s){
 
     code = reactive({

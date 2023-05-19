@@ -38,11 +38,11 @@ ui = function(id){
 }
 
 #' @export
-server = function(id,karyo_params){
+server = function(id,karyo_params, marker_data){
   moduleServer(id,function(i,o,s){
 
-    plot$server("plot",karyo_params)
-    code$server("code",karyo_params)
+    plot$server("plot",karyo_params, marker_data)
+    code$server("code",karyo_params, marker_data)
 
   })
 }
