@@ -26,7 +26,7 @@ ui = function(id){
             class = "text-center fw-bold text-lowercase",
             tags$tr(
                 tags$th(style = "text-transform: none;font-weight: bold","chr"),
-                tags$th(style = "text-transform: none;font-weight: bold","pos"),
+                tags$th(style = "text-transform: none;font-weight: bold","x"),
                 tags$th(style = "text-transform: none;font-weight: bold","label")
             )
         ),
@@ -84,6 +84,7 @@ server = function(id, marker_data){
 
     observeEvent(i$marker_file,{
       req(i$marker_file)
+      removeUI("#marker_feedback > p", multiple = TRUE)
 
       tryCatch(
         {
@@ -96,9 +97,8 @@ server = function(id, marker_data){
 
           data = fread(file_path, sep=";")
 
-          if(length(data) > 0){
+          if(ncol(data) == 3 & all(c("chr", "x", "labels") %in% colnames(data)) ) {
             marker_data(data)
-            removeUI("#marker_feedback > p", multiple = T)
           }else{
             stop("Invalid file")
           }

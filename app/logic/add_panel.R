@@ -16,6 +16,7 @@ add_panel = function(id){
     )
 
     type_selector = paste0(id, "_type")
+    data_selector = paste0(id, "_data")
 
     div(
         id = id,
@@ -31,7 +32,8 @@ add_panel = function(id){
             div(
                 class="text-end mt-3",
                 actionButton(inputId=id,label="Delete",icon=icon("trash"),style="background-color: red;color: white")
-            )
+            ),
+
         )
     )
 

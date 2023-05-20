@@ -30,10 +30,10 @@ server = function(id,karyo_params, marker_data){
 
           if(!is.null(marker_data)){
             if(params[["plot.type"]] %in% c("3", "4", "5")){
-              kpPlotMarkers(plot, chr=marker_data$chr, x=marker_data$pos, labels=marker_data$labels)
+              kpPlotMarkers(plot, chr=marker_data$chr, x=marker_data$x, labels=marker_data$labels, label.margin = 5)
 
             }else{
-              kpPlotMarkers(plot, chr=marker_data$chr, x=marker_data$pos, labels=marker_data$labels, text.orientation = "horizontal")
+              kpPlotMarkers(plot, chr=marker_data$chr, x=marker_data$x, labels=marker_data$labels, text.orientation = "horizontal" )
             }
             
           }
