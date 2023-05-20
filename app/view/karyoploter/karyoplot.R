@@ -50,13 +50,18 @@ server = function(id,karyo_params){
     })
 
     marker_data = reactiveVal(NULL) # Marker data initialization
+    plot_data = reactiveVal(NULL)   # List to store panel plot data
+
+    observeEvent(i[["sidebar-btn-update"]],{
+        print("button clicked")
+    })
 
     selected_genome = reactive({
         i[["sidebar-genomes-kparams_genome"]]
     })
 
-        sidebar$server("sidebar",karyo_params,selected_genome, marker_data)
-        main_panel$server("mainPanel",karyo_params, marker_data)
+        sidebar$server("sidebar",karyo_params,selected_genome, marker_data, plot_data)
+        main_panel$server("mainPanel",karyo_params, marker_data, plot_data)
 
     })
 }

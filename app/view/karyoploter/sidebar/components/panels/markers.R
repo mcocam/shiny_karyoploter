@@ -12,10 +12,14 @@ box::use(
     observeEvent,
     req,
     insertUI,
-    removeUI],
+    removeUI,
+    HTML],
   tools[file_ext],
   data.table[fread]
 )
+
+marker_text = HTML("Upload a text file to add <a href = 'https://bernatgel.github.io/karyoploter_tutorial//Tutorial/PlotMarkers/PlotMarkers.html' target = '_blank'>markers</a>. Please, be sure that your data is CSV separated with ';' and follows this sctructure:")
+
 
 #' @export
 ui = function(id){
@@ -57,13 +61,13 @@ ui = function(id){
         div(
             class = "card-body",
             div(
-                p("Upload a text file to add markers. Please, be sure that your data is CSV separated with ';' and follows this sctructure:"),
+                p(marker_text),
                 div(
                   class="my-2",
                   marker_demo_table
                 ),
                 div(
-                  fileInput(ns("marker_file"), "Markers file",
+                  fileInput(ns("marker_file"), "",
                     multiple = FALSE,
                     accept = c("text/csv",
                          "text/comma-separated-values,text/plain",
