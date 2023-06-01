@@ -20,7 +20,7 @@ shiny::runApp()
 
 ## Running in linux system
 
-In linux systems (Ubuntu), the installation of Cairo package could be problematic. Two dependencies are missed: cairo.h and Intrinsic.h
+Some problems have been detected when trying to set up the app in Linux system. The following ependencies are missed: cairo.h, Intrinsic.h, bzlib.h, curl.h.
 
 In order to fix cairo.h the following packages should be installed:
 
@@ -33,5 +33,18 @@ For Intrinsic.h:
 ```
 sudo apt-get install libxt-dev
 ```
+
+For bzlib.h:
+
+```
+sudo apt install libbz2-dev
+```
+
+For curl.h:
+
+```
+sudo apt install libcurl4-gnutls-dev
+```
+
 
 # Deployment
