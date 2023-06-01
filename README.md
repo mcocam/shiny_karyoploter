@@ -4,6 +4,8 @@ An R Shiny interfacte for <a href="http://bioconductor.org/packages/release/bioc
 
 A live demo can be found on: <a href="https://mcocam.shinyapps.io/karyo_1/" target="_blank">Shiny karyoploteR</a>
 
+The app has been build with R 4.3.
+
 # Set up and installation (local)
 
 First, download the project and open it with code editor. Be sure that the root of the project is settled as working directory.
