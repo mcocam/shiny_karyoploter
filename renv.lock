@@ -178,14 +178,24 @@
       ],
       "Hash": "a236af72143f9023b2f9f5f8baa81712"
     },
+    "BiocManager": {
+      "Package": "BiocManager",
+      "Version": "1.30.20",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "utils"
+      ],
+      "Hash": "a7fca16a50b6ef7771b49d636dd54b57"
+    },
     "BiocParallel": {
       "Package": "BiocParallel",
-      "Version": "1.34.1",
+      "Version": "1.34.2",
       "Source": "Bioconductor",
       "git_url": "https://git.bioconductor.org/packages/BiocParallel",
       "git_branch": "RELEASE_3_17",
-      "git_last_commit": "be65913",
-      "git_last_commit_date": "2023-05-05",
+      "git_last_commit": "77491b2",
+      "git_last_commit_date": "2023-05-22",
       "Requirements": [
         "BH",
         "R",
@@ -198,16 +208,16 @@
         "stats",
         "utils"
       ],
-      "Hash": "6e0d920ff5276a1ab9990c35eb1bcd9c"
+      "Hash": "84347b6a8118ba2182b148298b118f0e"
     },
     "Biostrings": {
       "Package": "Biostrings",
-      "Version": "2.68.0",
+      "Version": "2.68.1",
       "Source": "Bioconductor",
       "git_url": "https://git.bioconductor.org/packages/Biostrings",
       "git_branch": "RELEASE_3_17",
-      "git_last_commit": "f28b783",
-      "git_last_commit_date": "2023-04-25",
+      "git_last_commit": "cfbb402",
+      "git_last_commit_date": "2023-05-16",
       "Requirements": [
         "BiocGenerics",
         "GenomeInfoDb",
@@ -222,7 +232,7 @@
         "stats",
         "utils"
       ],
-      "Hash": "7699769946b577c3a2664c39eecd3abd"
+      "Hash": "838eef43ab267a7409d68ba0fa8da5fa"
     },
     "Cairo": {
       "Package": "Cairo",
@@ -249,12 +259,12 @@
     },
     "DelayedArray": {
       "Package": "DelayedArray",
-      "Version": "0.26.2",
+      "Version": "0.26.3",
       "Source": "Bioconductor",
       "git_url": "https://git.bioconductor.org/packages/DelayedArray",
       "git_branch": "RELEASE_3_17",
-      "git_last_commit": "9836b18",
-      "git_last_commit_date": "2023-05-05",
+      "git_last_commit": "98215c5",
+      "git_last_commit_date": "2023-05-22",
       "Requirements": [
         "BiocGenerics",
         "IRanges",
@@ -267,7 +277,7 @@
         "stats",
         "stats4"
       ],
-      "Hash": "65d87f0cf7b1fca7ecfb0201c1427cd4"
+      "Hash": "05e1a7eea8d7129ef9c6c6299e4f8cc9"
     },
     "Formula": {
       "Package": "Formula",
@@ -470,7 +480,7 @@
     },
     "Matrix": {
       "Package": "Matrix",
-      "Version": "1.5-4",
+      "Version": "1.5-4.1",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -482,7 +492,7 @@
         "stats",
         "utils"
       ],
-      "Hash": "e779c7d9f35cc364438578f334cffee2"
+      "Hash": "38082d362d317745fb932e13956dccbb"
     },
     "MatrixGenerics": {
       "Package": "MatrixGenerics",
@@ -668,12 +678,12 @@
     },
     "S4Arrays": {
       "Package": "S4Arrays",
-      "Version": "1.0.1",
+      "Version": "1.0.4",
       "Source": "Bioconductor",
       "git_url": "https://git.bioconductor.org/packages/S4Arrays",
       "git_branch": "RELEASE_3_17",
-      "git_last_commit": "5b00735",
-      "git_last_commit_date": "2023-04-30",
+      "git_last_commit": "d8d6a3b",
+      "git_last_commit_date": "2023-05-12",
       "Requirements": [
         "BiocGenerics",
         "IRanges",
@@ -684,7 +694,7 @@
         "methods",
         "stats"
       ],
-      "Hash": "fa74606b85dbbbafd5d645f7a3c51504"
+      "Hash": "3be34103255923c2fbb4a98b4d7449b9"
     },
     "S4Vectors": {
       "Package": "S4Vectors",
@@ -1649,7 +1659,7 @@
     },
     "knitr": {
       "Package": "knitr",
-      "Version": "1.42",
+      "Version": "1.43",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -1661,7 +1671,7 @@
         "xfun",
         "yaml"
       ],
-      "Hash": "8329a9bcc82943c8069104d4be3ee22d"
+      "Hash": "9775eb076713f627c07ce41d8199d8f6"
     },
     "labeling": {
       "Package": "labeling",
@@ -1871,18 +1881,6 @@
         "askpass"
       ],
       "Hash": "0f7cd2962e3044bb940cca4f4b5cecbe"
-    },
-    "packrat": {
-      "Package": "packrat",
-      "Version": "0.9.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "tools",
-        "utils"
-      ],
-      "Hash": "481428983c19a7c443f7ea1beff0a2de"
     },
     "pillar": {
       "Package": "pillar",
@@ -2175,7 +2173,7 @@
     },
     "rmarkdown": {
       "Package": "rmarkdown",
-      "Version": "2.21",
+      "Version": "2.22",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -2195,7 +2193,7 @@
         "xfun",
         "yaml"
       ],
-      "Hash": "493df4ae51e2e984952ea4d5c75786a3"
+      "Hash": "75a01be060d800ceb14e32c666cacac9"
     },
     "rpart": {
       "Package": "rpart",
@@ -2219,24 +2217,6 @@
         "R"
       ],
       "Hash": "1de7ab598047a87bba48434ba35d497d"
-    },
-    "rsconnect": {
-      "Package": "rsconnect",
-      "Version": "0.8.29",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "curl",
-        "digest",
-        "jsonlite",
-        "openssl",
-        "packrat",
-        "rstudioapi",
-        "tools",
-        "yaml"
-      ],
-      "Hash": "fe178fc15af80952f546aafedf655b36"
     },
     "rstudioapi": {
       "Package": "rstudioapi",
@@ -2407,7 +2387,7 @@
     },
     "styler": {
       "Package": "styler",
-      "Version": "1.9.1",
+      "Version": "1.10.0",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -2422,14 +2402,14 @@
         "vctrs",
         "withr"
       ],
-      "Hash": "ed8c90822b7da46beee603f263a85fe0"
+      "Hash": "24f7192497d696c39d3b39b2e29a039d"
     },
     "sys": {
       "Package": "sys",
-      "Version": "3.4.1",
+      "Version": "3.4.2",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "34c16f1ef796057bfa06d3f4ff818a5d"
+      "Hash": "3a1be13d68d47a8cd0bfd74739ca1555"
     },
     "testthat": {
       "Package": "testthat",

@@ -20,7 +20,7 @@ shiny::runApp()
 
 ## Running in linux system
 
-Some problems have been detected when trying to set up the app in Linux system. The following ependencies are missed: cairo.h, Intrinsic.h, bzlib.h, curl.h, gfortran.
+Some problems have been detected when trying to set up the app in Linux system. The following ependencies are missed: cairo.h, Intrinsic.h, bzlib.h, curl.h, gfortran, liblas, libgs.
 
 In order to fix cairo.h the following packages should be installed:
 
@@ -51,5 +51,14 @@ For gfortran:
 ```
 sudo apt-get install gfortran
 ```
+
+```
+sudo apt-get install libblas-dev liblapack-dev
+```
+
+```
+sudo apt-get install libgsl0-dev
+```
+
 
 # Deployment
