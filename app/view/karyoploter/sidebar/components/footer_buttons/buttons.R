@@ -27,7 +27,7 @@ ui = function(id){
       class="row",
       div(class="col",
       div(class="d-flex justify-content-around",
-        actionButton(ns("update"),label="Add panel data to plot",icon=icon("arrows-rotate"), disabled = TRUE, onclick="App.disablePanelButton()"),
+        actionButton(ns("update"),label="Update plot data",icon=icon("arrows-rotate"), disabled = TRUE, onclick="App.disablePanelButton()"),
         downloadButton(ns("img"),label="Export as SVG")),
       )
     )

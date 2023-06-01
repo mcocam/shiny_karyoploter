@@ -10,12 +10,13 @@ box::use(
 add_panel = function(id){
 
     panel_type_choices = c(
-        "Bars (plot)" = "plot_bar",
-        "Point (plot)" = "plot_points",
-        "lines (plot)" = "plot_lines"
+        "Bars" = "plot_bar",
+        "Points" = "plot_points",
+        "Lines" = "plot_lines"
     )
 
     type_selector = paste0(id, "_type")
+    data_selector = paste0(id, "_data")
 
     div(
         id = id,
@@ -30,8 +31,9 @@ add_panel = function(id){
             ),
             div(
                 class="text-end mt-3",
-                actionButton(inputId=id,label="Delete",icon=icon("trash"),style="background-color: red;color: white")
-            )
+                actionButton(inputId=id,label="Delete",icon=icon("trash"),style="background-color: red;color: white", onclick="App.enablePanelButton()")
+            ),
+
         )
     )
 

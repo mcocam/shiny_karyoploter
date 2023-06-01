@@ -12,10 +12,14 @@ box::use(
     observeEvent,
     req,
     insertUI,
-    removeUI],
+    removeUI,
+    HTML],
   tools[file_ext],
   data.table[fread]
 )
+
+marker_text = HTML("Upload a text file to add <a href = 'https://bernatgel.github.io/karyoploter_tutorial//Tutorial/PlotMarkers/PlotMarkers.html' target = '_blank'>markers</a>. Please, be sure that your data is CSV separated with ';' and follows this sctructure:")
+
 
 #' @export
 ui = function(id){
@@ -26,7 +30,7 @@ ui = function(id){
             class = "text-center fw-bold text-lowercase",
             tags$tr(
                 tags$th(style = "text-transform: none;font-weight: bold","chr"),
-                tags$th(style = "text-transform: none;font-weight: bold","pos"),
+                tags$th(style = "text-transform: none;font-weight: bold","x"),
                 tags$th(style = "text-transform: none;font-weight: bold","label")
             )
         ),
@@ -57,13 +61,13 @@ ui = function(id){
         div(
             class = "card-body",
             div(
-                p("Upload a text file to add markers. Please, be sure that your data is CSV separated with ';' and follows this sctructure:"),
+                p(marker_text),
                 div(
                   class="my-2",
                   marker_demo_table
                 ),
                 div(
-                  fileInput(ns("marker_file"), "Markers file",
+                  fileInput(ns("marker_file"), "",
                     multiple = FALSE,
                     accept = c("text/csv",
                          "text/comma-separated-values,text/plain",
@@ -84,6 +88,7 @@ server = function(id, marker_data){
 
     observeEvent(i$marker_file,{
       req(i$marker_file)
+      removeUI("#marker_feedback > p", multiple = TRUE)
 
       tryCatch(
         {
@@ -94,15 +99,10 @@ server = function(id, marker_data){
             stop("Invalid file")
           }
 
-          data = fread(file_path, sep=";", 
-                        colClasses = c( chr = "character", 
-                                        pos = "integer", 
-                                        labels = "character")
-                      )
+          data = fread(file_path, sep=";")
 
-          if(length(data) > 0){
+          if(ncol(data) == 3 & all(c("chr", "x", "labels") %in% colnames(data)) ) {
             marker_data(data)
-            removeUI("#marker_feedback > p", multiple = T)
           }else{
             stop("Invalid file")
           }

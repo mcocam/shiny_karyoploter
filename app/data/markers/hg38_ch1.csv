@@ -1,4 +1,4 @@
-chr;pos;labels
+chr;x;labels
 chr1;1e+07;Gene1
 chr1;2e+07;Gene2
 chr1;3e+07;Gene3

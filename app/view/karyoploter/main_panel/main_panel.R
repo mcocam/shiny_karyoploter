@@ -38,7 +38,7 @@ ui = function(id){
 }
 
 #' @export
-server = function(id,karyo_params, marker_data){
+server = function(id,karyo_params, marker_data, plot_data){
   moduleServer(id,function(i,o,s){
 
     plot$server("plot",karyo_params, marker_data)
