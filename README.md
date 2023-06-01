@@ -6,7 +6,7 @@ A live demo can be found on: <a href="https://mcocam.shinyapps.io/karyo_1/" targ
 
 # Set up and installation (local)
 
-First, download the project and set working directory on it.
+First, download the project and open it with code editor. Be sure that the root of the project is settled as working directory.
 
 Then run 
 ```
