@@ -10,13 +10,28 @@ First, download the project and set working directory on it.
 
 Then run 
 ```
-renv::activate()
 renv::install()
 ```
   
 And, finally, run shiny:
 ```
 shiny::runApp()
+```
+
+## Running in linux system
+
+In linux systems (Ubuntu), the installation of Cairo package could be problematic. Two dependencies are missed: cairo.h and Intrinsic.h
+
+In order to fix cairo.h the following packages should be installed:
+
+```
+sudo apt install libcairo2-dev
+```
+
+For Intrinsic.h:
+
+```
+sudo apt-get install libxt-dev
 ```
 
 # Deployment
