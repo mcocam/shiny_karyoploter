@@ -50,8 +50,9 @@ server = function(id,karyo_params){
     })
 
     marker_data = reactiveVal(NULL) # Marker data initialization
-    plot_data = reactiveVal(NULL)   # List to store panel plot data
+    plot_data = reactiveVal(NULL)   # Plot data initialization
 
+    # When update plot is clicked, get all the valid input data
     observeEvent(i[["sidebar-btn-update"]],{
         print("button clicked")
     })
