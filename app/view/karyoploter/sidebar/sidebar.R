@@ -25,6 +25,7 @@ ui = function(id){
   ns = NS(id)
 
     sidebarPanel(
+      class = "mb-3",
       div(class="my-3 fw-bold text-dark text-center","Ideogram options"),
       genomes$ui(ns("genomes")),
       plot_type$ui(ns("plot_type")),
