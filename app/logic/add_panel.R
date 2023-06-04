@@ -10,7 +10,8 @@ box::use(
         NS,
         selectInput,
         conditionalPanel,
-        fileInput],
+        fileInput,
+        checkboxInput],
     bslib[
         card,
         card_body_fill],
@@ -29,7 +30,7 @@ add_panel = function(id){
 
     type_selector = paste0(id, "_type")
     data_selector = paste0(id, "_data")
-    print(data_selector)
+    is_valid_panel = paste0(id, "_valid")
 
     div(
         id = id,
@@ -57,6 +58,12 @@ add_panel = function(id){
                             style="background-color: red;color: white", 
                             onclick="App.enablePanelButton()")
             ),
+            div(
+                class = "d-none",
+                checkboxInput(is_valid_panel,
+                                label = "",
+                                value = TRUE)
+            )
 
         )
     )

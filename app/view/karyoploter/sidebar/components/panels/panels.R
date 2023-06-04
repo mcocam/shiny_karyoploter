@@ -14,6 +14,7 @@ box::use(
     tagList,
     insertUI,
     removeUI,
+    updateCheckboxInput,
     HTML],
   app/logic/add_panel[add_panel]
 )
@@ -71,6 +72,16 @@ server = function(id, plot_data){
       panel_names$names = c(panel_names$names,ns(id))
 
       observeEvent(i[[id]],{
+        
+        target_id = paste0(id,"_valid")
+
+        updateCheckboxInput(
+          session = s,
+          inputId = target_id,
+          label = "",
+          value = FALSE
+        )
+
         removeUI(selector=paste0("#",ns(id) ))
       })
     })

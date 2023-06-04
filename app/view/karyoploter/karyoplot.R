@@ -6,13 +6,15 @@ box::use(
         reactive,
         observeEvent,
         observe,
-        reactiveVal
+        reactiveVal,
+        isTruthy
         ],
 
     app/view/karyoploter/sidebar/sidebar,
     app/view/karyoploter/main_panel/main_panel,
 
-    app/logic/find_inputs[find_inputs]
+    app/logic/find_params[find_params],
+    app/logic/find_plot_files[find_plot_files]
 )
 
 #' @export
@@ -36,7 +38,7 @@ server = function(id,karyo_params){
 
         params = list()
 
-        argument_values = find_inputs(i,".*-kparams_(.*)")
+        argument_values = find_params(i)
 
         for (argument in names(argument_values) ){
             params[[argument]] = unlist(i[[argument_values[[argument]]]])
@@ -54,7 +56,29 @@ server = function(id,karyo_params){
 
     # When update plot is clicked, get all the valid input data
     observeEvent(i[["sidebar-btn-update"]],{
-        print("button clicked")
+
+        input_references = find_plot_files(i)
+
+        if(length(input_references) > 0){
+
+            for (index in 1:nrow(input_references) ){
+
+                input_ref = input_references[index,]
+                type_id = input_ref$type
+                file_id = input_ref$data 
+                valid_id = input_ref$valid
+
+                selected_type = i[[type_id]]
+                file_path = i[[file_id]]$filepath 
+                is_valid = i[[valid_id]]
+
+                print(is_valid)
+            }
+
+        }
+
+        
+
     })
 
     selected_genome = reactive({
