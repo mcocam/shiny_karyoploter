@@ -9,9 +9,10 @@ box::use(
 #' @param input Shiny server object
 #' @return A list with matched param name and the input name reference
 #' @export 
-find_inputs = function(input, expression){
+find_params = function(input){
 
     input_names = names(input)
+    expression = ".*-kparams_(.*)"
     inputs_found = list()
 
     for (input_name in input_names){

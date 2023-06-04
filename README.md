@@ -4,9 +4,11 @@ An R Shiny interfacte for <a href="http://bioconductor.org/packages/release/bioc
 
 A live demo can be found on: <a href="https://mcocam.shinyapps.io/karyo_1/" target="_blank">Shiny karyoploteR</a>
 
+The app has been build with R 4.3.
+
 # Set up and installation (local)
 
-First, download the project and set working directory on it.
+First, download the project and open it with code editor. Be sure that the root of the project is settled as working directory.
 
 Then run 
 ```
@@ -20,7 +22,7 @@ shiny::runApp()
 
 ## Running in linux system
 
-In linux systems (Ubuntu), the installation of Cairo package could be problematic. Two dependencies are missed: cairo.h and Intrinsic.h
+Some problems have been detected when trying to set up the app in Linux system. The following ependencies are missed: cairo.h, Intrinsic.h, bzlib.h, curl.h, gfortran, liblas, libgs.
 
 In order to fix cairo.h the following packages should be installed:
 
@@ -33,5 +35,32 @@ For Intrinsic.h:
 ```
 sudo apt-get install libxt-dev
 ```
+
+For bzlib.h:
+
+```
+sudo apt install libbz2-dev
+```
+
+For curl.h:
+
+```
+sudo apt install libcurl4-gnutls-dev
+```
+
+For gfortran:
+
+```
+sudo apt-get install gfortran
+```
+
+```
+sudo apt-get install libblas-dev liblapack-dev
+```
+
+```
+sudo apt-get install libgsl0-dev
+```
+
 
 # Deployment
