@@ -41,8 +41,8 @@ ui = function(id){
 server = function(id,karyo_params, marker_data, plot_data){
   moduleServer(id,function(i,o,s){
 
-    plot$server("plot",karyo_params, marker_data)
-    code$server("code",karyo_params, marker_data)
+    plot$server("plot",karyo_params, marker_data, plot_data)
+    code$server("code",karyo_params, marker_data, plot_data)
 
   })
 }

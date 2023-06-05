@@ -29,11 +29,11 @@ ui = function(id){
 }
 
 #' @export
-server = function(id,karyo_params, marker_data){
+server = function(id,karyo_params, marker_data, plot_data){
   moduleServer(id,function(i,o,s){
 
     code = reactive({
-        code = make_plot_code(karyo_params)
+        code = make_plot_code(karyo_params, marker_data, plot_data)
     })
 
     observe({
@@ -43,7 +43,3 @@ server = function(id,karyo_params, marker_data){
 
   })
 }
-
-
-
-

@@ -4,7 +4,7 @@ box::use(
 
 
 #' @export 
-make_plot_code = function(karyo_params){
+make_plot_code = function(karyo_params, marker_data, plot_data){
 
     karyo_params_v = karyo_params()
 
