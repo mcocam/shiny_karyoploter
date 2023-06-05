@@ -22,6 +22,7 @@ box::use(
 
 #' @export
 ui = function(id){
+
   ns = NS(id)
 
     sidebarPanel(
@@ -42,7 +43,7 @@ ui = function(id){
         ),
         tabPanel(
           "Plots",
-          div(class="my-3 fw-bold text-dark text-center","Add plot"),
+          div(class="my-3 fw-bold text-dark text-center", "Add plot"),
           panels$ui(ns("panels"))
         )
       ),

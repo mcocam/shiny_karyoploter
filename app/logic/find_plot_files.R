@@ -15,7 +15,8 @@ find_plot_files = function(input){
     input_references = data.frame(
         type = character(),
         file = character(),
-        valid = character()
+        valid = character(),
+        message = character()
     )
 
     for (input_name in input_names){
@@ -29,11 +30,13 @@ find_plot_files = function(input){
             type = paste0(input_found, "type")
             data = paste0(input_found, "data")
             valid = paste0(input_found, "valid")
+            message = paste0(input_found, "message")
 
             temp = data.frame(
                 type = type,
                 data = data,
-                valid = valid
+                valid = valid,
+                message = message
             )
 
             input_references = rbind(input_references, temp)
