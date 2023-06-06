@@ -16,12 +16,15 @@ box::use(
     removeUI,
     updateCheckboxInput,
     HTML],
-  app/logic/add_panel[add_panel]
+  app/logic/add_panel[add_panel],
+  app/logic/find_plot_files[find_plot_files]
 )
 
 data_text = HTML("
 <p>This section allows you to dynamically include graphics (+). Each new panel includes a new track above or below the karyotype. Spacing is managed using the <a href='https://bernatgel.github.io/karyoploter_tutorial//Tutorial/Autotrack/Autotrack.html' target='_blank'>autotrack</a> function.</p> 
-In order to update the plot data, you need to click on 'Update plot data' button.
+<p>In order to update the plot data, you need to click on 'Update plot data' button.</p>
+<p>All input data is expected to be a CSV file separated with ;.</p>
+<p>The expected data for each plot can be seen on cards.</p>
 ")
 
 #' @export
@@ -85,12 +88,5 @@ server = function(id, plot_data){
         removeUI(selector=paste0("#",ns(id) ))
       })
     })
-
-    
-
-
-
-
-
   })
 }

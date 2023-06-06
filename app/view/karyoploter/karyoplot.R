@@ -155,8 +155,21 @@ server = function(id,karyo_params){
         i[["sidebar-genomes-kparams_genome"]]
     })
 
-        sidebar$server("sidebar",karyo_params,selected_genome, marker_data, plot_data)
-        main_panel$server("mainPanel",karyo_params, marker_data, plot_data)
+    # observe({
+    #     plot_inputs = find_plot_files(i)
+    #     type_input_id = plot_inputs$type 
+
+    #     observeEvent(sapply(type_input_id, function(name) i[[name]]), {
+    #         updateActionButton(
+    #             s,
+    #             "sidebar-btn-update",
+    #             disabled = FALSE
+    #         )
+    #     })
+    # })
+
+    sidebar$server("sidebar",karyo_params,selected_genome, marker_data, plot_data)
+    main_panel$server("mainPanel",karyo_params, marker_data, plot_data)
 
     })
 }

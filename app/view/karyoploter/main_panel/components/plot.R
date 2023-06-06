@@ -11,10 +11,13 @@ box::use(
       kpBars,
       autotrack,
       kpAxis,
-      kpDataBackground
+      kpDataBackground,
+      kpPoints,
+      kpLines
       ],
 
-      app/logic/normalize_data[normalize_y]
+      app/logic/normalize_data[normalize_y],
+      app/logic/get_min_max_y[get_min_max_y]
 
 )
 
@@ -30,6 +33,7 @@ ui = function(id){
 server = function(id,karyo_params, marker_data, plot_data){
   moduleServer(id,function(i,o,s){
 
+    # Main panel plot
     o$plot = renderPlot({
       tryCatch({
 
@@ -65,7 +69,7 @@ server = function(id,karyo_params, marker_data, plot_data){
 
               type  = panel$type
               data  = as.data.frame(panel$data)
-              chrs   = unique(data$chr)
+              chrs  = unique(data$chr)
 
               margin = 0 
               if (total_tracks > 0){
@@ -77,12 +81,16 @@ server = function(id,karyo_params, marker_data, plot_data){
                 total.tracks = total_tracks,
                 margin = margin)
 
+              global_min_max = get_min_max_y(data)
+              y_min = global_min_max[1]
+              y_max = global_min_max[2]
+
               kpAxis(
                 plot, 
                 r0 = track$r0, 
                 r1 = track$r1,
-                ymin = min(data$y),
-                ymax = max(data$y))
+                ymin = y_min,
+                ymax = y_max)
 
               for(chr in chrs){
 
@@ -92,13 +100,39 @@ server = function(id,karyo_params, marker_data, plot_data){
                   type,
                   "plot_bar" = {
                     kpBars(
-                      plot, 
+                      plot,
                       chr = chr, 
-                      x0 = filtered_data$x0, 
-                      x1 = filtered_data$x1, 
-                      y1 = normalize_y(filtered_data$y),
+                      x0 = filtered_data$x0,
+                      x1 = filtered_data$x1,
+                      y1 = filtered_data$y1,
                       r0 = track$r0,
-                      r1 = track$r1)
+                      r1 = track$r1,
+                      ymax = y_max)
+                  },
+                  "plot_points" = {
+                    kpPoints(
+                      plot,
+                      chr = chr,
+                      x = filtered_data$x,
+                      y = filtered_data$y,
+                      r0 = track$r0,
+                      r1 = track$r1,
+                      ymax = y_max,
+                      ymin = y_min
+                    )
+                  },
+                  "plot_lines" = {
+                    kpLines(
+                      plot,
+                      chr = chr,
+                      x = filtered_data$x,
+                      y = filtered_data$y,
+                      r0 = track$r0,
+                      r1 = track$r1,
+                      ymax = y_max,
+                      ymin = y_min
+                    )
+
                   }
                 )
 

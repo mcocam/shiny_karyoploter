@@ -12,12 +12,14 @@ box::use(
         conditionalPanel,
         fileInput,
         checkboxInput,
-        uiOutput],
+        uiOutput,
+        HTML],
     bslib[
         card,
         card_body_fill],
     htmlTable[htmlTable],
-    shiny[tags, HTML]
+    shiny[tags, HTML],
+    glue[glue]
 )
 
 #' @export
@@ -29,10 +31,91 @@ add_panel = function(id){
         "Lines" = "plot_lines"
     )
 
+    panel_type_messages = c(
+        "bars" = "
+                <p>The plot function is 
+                based on 
+                <a href = 'https://rdrr.io/bioc/karyoploteR/man/kpBars.html' 
+                target='_blank' >kpBars</a>. The function is based on rectangles geometries 
+                (for each row).</p>
+                <p>The expected data is a data.frame with the following named columns: 
+                    <ul>
+                        <li>
+                            <span class='fw-bold'>chr</span>:
+                            chromosome, 
+                            can be multiple and must match the same 
+                            label as seen in 'filter chromosome' section)
+                        </li>
+                        <li>
+                            <span class='fw-bold'>x0</span>:
+                            initial x position for the rectangle
+                        </li>
+                        <li>
+                            <span class='fw-bold'>x1</span>:
+                            final x position for the rectangle
+                        </li>
+                        <li>
+                            <span class='fw-bold'>y1</span>:
+                            height of the rectangle
+                        </li>
+                    <ul>
+                </p>
+                ",
+        "lines" = "
+                <p>The plot function is 
+                based on 
+                <a href = 'https://rdrr.io/bioc/karyoploteR/man/kpLines.html' 
+                target='_blank' >kpLines</a>.</p>
+                <p>The expected data is a data.frame with the following named columns: 
+                    <ul>
+                        <li>
+                            <span class='fw-bold'>chr</span>:
+                            chromosome, 
+                            can be multiple and must match the same 
+                            label as seen in 'filter chromosome' section)
+                        </li>
+                        <li>
+                            <span class='fw-bold'>x</span>:
+                            x value
+                        </li>
+                        <li>
+                            <span class='fw-bold'>y</span>:
+                            y value
+                        </li>
+                    <ul>
+                </p>
+                ",
+        "points" = "
+                <p>The plot function is 
+                based on 
+                <a href = 'https://rdrr.io/bioc/karyoploteR/man/kpPoints.html' 
+                target='_blank' >kpPoints</a>.</p>
+                <p>The expected data is a data.frame with the following named columns: 
+                    <ul>
+                        <li>
+                            <span class='fw-bold'>chr</span>:
+                            chromosome, 
+                            can be multiple and must match the same 
+                            label as seen in 'filter chromosome' section)
+                        </li>
+                        <li>
+                            <span class='fw-bold'>x</span>:
+                            x value
+                        </li>
+                        <li>
+                            <span class='fw-bold'>y</span>:
+                            y value
+                        </li>
+                    <ul>
+                </p>
+        "
+    )
+
     type_selector = paste0(id, "_type")
     data_selector = paste0(id, "_data")
     is_valid_panel = paste0(id, "_valid")
     message_id = paste0(id, "_message")
+    conditional_id = gsub("app-layout-sidebar-panels-","",type_selector)
 
     div(
         id = id,
@@ -48,6 +131,20 @@ add_panel = function(id){
                 selected = "plot_bar")
             ),
 
+            div(style="font-size: 0.9rem",
+                conditionalPanel(
+                    condition = glue("input[['{type_selector}']] == 'plot_bar'"),
+                    div(class = "mx-2", HTML(panel_type_messages["bars"]))
+                ),
+                conditionalPanel(
+                    condition = glue("input[['{type_selector}']] == 'plot_lines'"),
+                    div(class = "mx-2", HTML(panel_type_messages["lines"]))
+                ),
+                conditionalPanel(
+                    condition = glue("input[['{type_selector}']] == 'plot_points'"),
+                    div(class = "mx-2", HTML(panel_type_messages["points"]))
+                )
+            ),
             # Handle input data for plots
             div(
                 fileInput(data_selector, "",
