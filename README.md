@@ -62,5 +62,9 @@ sudo apt-get install libblas-dev liblapack-dev
 sudo apt-get install libgsl0-dev
 ```
 
+```
+sudo apt-get install libxml2-dev
+```
+
 
 # Deployment
