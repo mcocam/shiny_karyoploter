@@ -109,7 +109,7 @@ server = function(id, marker_data){
 
         },
         error = function(e){
-          print(e)
+          NULL
           insertUI(
             selector = "#marker_feedback", 
             ui = p("Invalid file, please check the expected format",
