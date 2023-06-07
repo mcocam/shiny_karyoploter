@@ -27,8 +27,12 @@ add_panel = function(id){
 
     panel_type_choices = c(
         "Bars" = "plot_bar",
-        "Points" = "plot_points",
-        "Lines" = "plot_lines"
+        "Coverage" = "plot_coverage",
+        "Density" = "plot_density",
+        "Horizon" = "plot_horizon",
+        "Lines" = "plot_lines",
+        "Manhattan" = "plot_manhattan",
+        "Points" = "plot_points"
     )
 
     panel_type_messages = c(
@@ -41,26 +45,86 @@ add_panel = function(id){
                 <p>The expected data is a data.frame with the following named columns: 
                     <ul>
                         <li>
-                            <span class='fw-bold'>chr</span>:
+                            <span class='fw-bold'>chr</span> (character):
                             chromosome, 
                             can be multiple and must match the same 
                             label as seen in 'filter chromosome' section)
                         </li>
                         <li>
-                            <span class='fw-bold'>x0</span>:
+                            <span class='fw-bold'>x0</span> (numeric):
                             initial x position for the rectangle
                         </li>
                         <li>
-                            <span class='fw-bold'>x1</span>:
+                            <span class='fw-bold'>x1</span> (numeric):
                             final x position for the rectangle
                         </li>
                         <li>
-                            <span class='fw-bold'>y1</span>:
+                            <span class='fw-bold'>y1</span> (numeric):
                             height of the rectangle
                         </li>
                     <ul>
                 </p>
                 ",
+        "coverage" = "
+            <p>The plot function is 
+                based on 
+                <a href = 'https://rdrr.io/bioc/karyoploteR/man/kpPlotCoverage.html' 
+                target='_blank' >kpPlotCoverage</a>.</p>
+                <p>The expected data is a data.frame with the following named columns: 
+                    <ul>
+                        <li>
+                            <span class='fw-bold'>chr</span> (character):
+                            chromosome, 
+                            can be multiple and must match the same 
+                            label as seen in 'filter chromosome' section)
+                        </li>
+                        <li>
+                            <span class='fw-bold'>start</span> (numeric):
+                            start x value
+                        </li>
+                        <li>
+                            <span class='fw-bold'>end</span> (numeric):
+                            end x value
+                        </li>
+                    </ul>
+                The dataframe is coerced 
+                to GRanges object and then density is computed
+                (<a href = 'https://rdrr.io/bioc/GenomicRanges/man/makeGRangesFromDataFrame.html' 
+                target = '_blank'>makeGRangesFromDataFrame</a>).
+                </p>
+                
+            </p>
+        ",
+        "density" = "
+            <p>The plot function is 
+                based on 
+                <a href = 'https://rdrr.io/bioc/karyoploteR/man/kpPlotDensity.html' 
+                target='_blank' >kpPlotDensity</a>.</p>
+                <p>The expected data is a data.frame with the following named columns: 
+                    <ul>
+                        <li>
+                            <span class='fw-bold'>chr</span> (character):
+                            chromosome, 
+                            can be multiple and must match the same 
+                            label as seen in 'filter chromosome' section)
+                        </li>
+                        <li>
+                            <span class='fw-bold'>start</span> (numeric):
+                            start x value
+                        </li>
+                        <li>
+                            <span class='fw-bold'>end</span> (numeric):
+                            end x value
+                        </li>
+                    </ul>
+                The dataframe is coerced 
+                to GRanges object and then density is computed
+                (<a href = 'https://rdrr.io/bioc/GenomicRanges/man/makeGRangesFromDataFrame.html' 
+                target = '_blank'>makeGRangesFromDataFrame</a>).
+                </p>
+                
+            </p>
+        ",
         "lines" = "
                 <p>The plot function is 
                 based on 
@@ -75,16 +139,84 @@ add_panel = function(id){
                             label as seen in 'filter chromosome' section)
                         </li>
                         <li>
-                            <span class='fw-bold'>x</span>:
+                            <span class='fw-bold'>x</span> (numeric):
                             x value
                         </li>
                         <li>
-                            <span class='fw-bold'>y</span>:
+                            <span class='fw-bold'>y</span> (numeric):
                             y value
                         </li>
                     <ul>
                 </p>
                 ",
+        "horizon" = "
+        <p>The plot function is 
+                based on 
+                <a href = 'https://rdrr.io/bioc/karyoploteR/man/kpPlotHorizon.html' 
+                target='_blank' >kpPlotHorizon</a>.</p>
+                <p>The expected data is a data.frame with the following named columns: 
+                    <ul>
+                        <li>
+                            <span class='fw-bold'>chr</span> (character):
+                            chromosome, 
+                            can be multiple and must match the same 
+                            label as seen in 'filter chromosome' section)
+                        </li>
+                        <li>
+                            <span class='fw-bold'>start</span> (numeric):
+                            start x value
+                        </li>
+                        <li>
+                            <span class='fw-bold'>end</span> (numeric):
+                            end x value
+                        </li>
+                        <li>
+                            <span class='fw-bold'>y</span> (numeric):
+                            y value
+                        </li>
+                    </ul>
+                The dataframe is coerced 
+                to GRanges object 
+                (<a href = 'https://rdrr.io/bioc/GenomicRanges/man/makeGRangesFromDataFrame.html' 
+                target = '_blank'>makeGRangesFromDataFrame</a>).
+                </p>
+                
+            </p>
+        ",
+        "manhattan" = "
+            <p>The plot function is 
+                based on 
+                <a href = 'https://rdrr.io/github/bernatgel/karyoploteR/man/kpPlotManhattan.html' 
+                target='_blank' >kpPlotManhattan</a>.</p>
+                <p>The expected data is a data.frame with the following named columns: 
+                    <ul>
+                        <li>
+                            <span class='fw-bold'>chr</span> (character):
+                            chromosome, 
+                            can be multiple and must match the same 
+                            label as seen in 'filter chromosome' section)
+                        </li>
+                        <li>
+                            <span class='fw-bold'>start</span> (numeric):
+                            start x value
+                        </li>
+                        <li>
+                            <span class='fw-bold'>end</span> (numeric):
+                            end x value
+                        </li>
+                        <li>
+                            <span class='fw-bold'>pval</span> (numeric):
+                            y value
+                        </li>
+                    </ul>
+                The dataframe is coerced 
+                to GRanges object 
+                (<a href = 'https://rdrr.io/bioc/GenomicRanges/man/makeGRangesFromDataFrame.html' 
+                target = '_blank'>makeGRangesFromDataFrame</a>).
+                </p>
+                
+            </p>
+        ",
         "points" = "
                 <p>The plot function is 
                 based on 
@@ -137,8 +269,24 @@ add_panel = function(id){
                     div(class = "mx-2", HTML(panel_type_messages["bars"]))
                 ),
                 conditionalPanel(
+                    condition = glue("input[['{type_selector}']] == 'plot_coverage'"),
+                    div(class = "mx-2", HTML(panel_type_messages["coverage"]))
+                ),
+                conditionalPanel(
+                    condition = glue("input[['{type_selector}']] == 'plot_density'"),
+                    div(class = "mx-2", HTML(panel_type_messages["density"]))
+                ),
+                conditionalPanel(
                     condition = glue("input[['{type_selector}']] == 'plot_lines'"),
                     div(class = "mx-2", HTML(panel_type_messages["lines"]))
+                ),
+                conditionalPanel(
+                    condition = glue("input[['{type_selector}']] == 'plot_horizon'"),
+                    div(class = "mx-2", HTML(panel_type_messages["horizon"]))
+                ),
+                conditionalPanel(
+                    condition = glue("input[['{type_selector}']] == 'plot_manhattan'"),
+                    div(class = "mx-2", HTML(panel_type_messages["manhattan"]))
                 ),
                 conditionalPanel(
                     condition = glue("input[['{type_selector}']] == 'plot_points'"),

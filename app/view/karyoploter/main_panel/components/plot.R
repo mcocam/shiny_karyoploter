@@ -13,8 +13,14 @@ box::use(
       kpAxis,
       kpDataBackground,
       kpPoints,
-      kpLines
+      kpLines,
+      kpPlotDensity,
+      kpPlotHorizon,
+      kpPlotCoverage,
+      kpPlotManhattan
       ],
+
+    GenomicRanges[makeGRangesFromDataFrame],
 
       app/logic/normalize_data[normalize_y],
       app/logic/get_min_max_y[get_min_max_y]
@@ -85,14 +91,57 @@ server = function(id,karyo_params, marker_data, plot_data){
               y_min = global_min_max[1]
               y_max = global_min_max[2]
 
-              kpAxis(
+              # High-level plot functions
+              if(type %in% c("plot_density", "plot_horizon", "plot_coverage", "plot_manhattan") ){
+
+                switch(
+                  type,
+                  "plot_coverage" = {
+                    kpPlotCoverage(
+                      plot,
+                      data = makeGRangesFromDataFrame(data),
+                      r0 = track$r0,
+                      r1 = track$r1
+                    )
+                  },
+                  "plot_density" = {
+                    kpPlotDensity(
+                      plot,
+                      data = makeGRangesFromDataFrame(data),
+                      r0 = track$r0,
+                      r1 = track$r1
+                    )
+                  },
+                  "plot_horizon" = {
+
+                    kpPlotHorizon(
+                      plot,
+                      data = makeGRangesFromDataFrame(data, keep.extra.columns = TRUE),
+                      r0 = track$r0,
+                      r1 = track$r1
+                    )
+                  },
+                  "plot_manhattan" = {
+                    kpPlotManhattan(
+                      plot,
+                      data = makeGRangesFromDataFrame(data, keep.extra.columns = TRUE),
+                      r0 = track$r0,
+                      r1 = track$r1
+                    )
+                  }
+                )
+
+              # Low-level plot functions
+              }else{
+
+                kpAxis(
                 plot, 
                 r0 = track$r0, 
                 r1 = track$r1,
                 ymin = y_min,
                 ymax = y_max)
 
-              for(chr in chrs){
+                for(chr in chrs){
 
                 filtered_data = data[data$chr == chr,]
 
@@ -138,10 +187,13 @@ server = function(id,karyo_params, marker_data, plot_data){
 
               }
 
+              }
+
               current_track = current_track + 1 
 
             }
           }else{
+
           }
 
           
@@ -149,9 +201,8 @@ server = function(id,karyo_params, marker_data, plot_data){
           # Return plot
           plot
         },
-        error = function(c) print(c),
-        warning = function(c) "warning",
-        message = function(c) "message")
+        error = function(e) print(e),
+        warning = function(c) "warning")
       })
   })
 }
