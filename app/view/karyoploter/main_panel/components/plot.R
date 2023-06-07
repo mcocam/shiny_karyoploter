@@ -50,17 +50,11 @@ server = function(id,karyo_params, marker_data, plot_data){
           # Initalize the idiogram
           plot = do.call(plotKaryotype,karyo_params())
 
-          # If some marker has been added
-          if(!is.null(marker_data)){
-            if(params[["plot.type"]] %in% c("3", "4", "5")){
-              kpPlotMarkers(plot, chr=marker_data$chr, x=marker_data$x, labels=marker_data$labels, label.margin = 5)
-
-            }else{
-              kpPlotMarkers(plot, chr=marker_data$chr, x=marker_data$x, labels=marker_data$labels, text.orientation = "horizontal" )
-            }
-            
-          }
-
+          # Initialize track 
+          track = data.frame(
+            r0 = NULL,
+            r1 = NULL
+          )
           # If some plot data has been added
           if(!is.null(plot_data)){
 
@@ -194,6 +188,36 @@ server = function(id,karyo_params, marker_data, plot_data){
             }
           }else{
 
+          }
+
+          # If some marker has been added
+          if(!is.null(marker_data)){
+
+            if(length(track) > 0){
+              
+              track$r0 = track$r0 * 1.7
+              track$r1 = track$r1 * 1.7
+            }
+
+            if(params[["plot.type"]] %in% c("3", "4", "5")){
+              kpPlotMarkers(
+                plot,
+                chr=marker_data$chr,
+                x=marker_data$x,
+                labels=marker_data$labels,
+                label.margin = 5,
+                r1 = track$r1)
+
+            }else{
+              kpPlotMarkers(
+                plot,
+                chr=marker_data$chr,
+                x=marker_data$x,
+                labels=marker_data$labels,
+                text.orientation = "horizontal",
+                r1 = track$r1)
+            }
+            
           }
 
           
