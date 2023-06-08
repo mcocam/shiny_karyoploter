@@ -12,7 +12,9 @@ box::use(
         conditionalPanel,
         fileInput,
         checkboxInput,
+        radioButtons,
         uiOutput,
+        tags,
         HTML],
     bslib[
         card,
@@ -29,7 +31,6 @@ add_panel = function(id){
         "Bars" = "plot_bar",
         "Coverage" = "plot_coverage",
         "Density" = "plot_density",
-        "Horizon" = "plot_horizon",
         "Lines" = "plot_lines",
         "Manhattan" = "plot_manhattan",
         "Points" = "plot_points"
@@ -246,7 +247,9 @@ add_panel = function(id){
     type_selector = paste0(id, "_type")
     data_selector = paste0(id, "_data")
     is_valid_panel = paste0(id, "_valid")
+    is_multi_id = paste0(id, "_multi")
     message_id = paste0(id, "_message")
+    panel_position_id = paste0(id, "_data.panel")
     conditional_id = gsub("app-layout-sidebar-panels-","",type_selector)
 
     div(
@@ -260,7 +263,10 @@ add_panel = function(id){
                 selectInput(type_selector,
                 label = "Plot type",
                 choices = panel_type_choices,
-                selected = "plot_bar")
+                selected = "plot_bar"),
+                tags$head(tags$script(HTML(glue("
+                    $('body').on('change', '#{type_selector}', () => App.enablePanelButton())
+                    "))))
             ),
 
             div(style="font-size: 0.9rem",
@@ -293,6 +299,23 @@ add_panel = function(id){
                     div(class = "mx-2", HTML(panel_type_messages["points"]))
                 )
             ),
+
+            div(
+                conditionalPanel(
+                    condition = glue("input[['{is_multi_id}']]"),
+                    div(
+                      class = "mx-2",
+                      radioButtons(
+                        panel_position_id,
+                        label = HTML("<p class='fw-bold'>Where the panel should be placed?</p>"),
+                        choices = c("Upper section" = 1, "Lower section" = 2)
+                      ),
+                      tags$head(tags$script(HTML(glue("
+                        $('body').on('change', '#{panel_position_id}', () => App.enablePanelButton())
+                        "))))
+                    )
+                )
+            ),
             # Handle input data for plots
             div(
                 fileInput(data_selector, "",
@@ -300,7 +323,10 @@ add_panel = function(id){
                             accept = c("text/csv",
                             "text/comma-separated-values,text/plain",
                             ".csv")
-                            )
+                            ),
+                tags$head(tags$script(HTML(glue("
+                    $('body').on('change', '#{data_selector}', () => App.enablePanelButton())
+                "))))
             ),
 
             # Dynamic user feedback text: has the data been processed?
@@ -323,7 +349,10 @@ add_panel = function(id){
                 class = "d-none",
                 checkboxInput(is_valid_panel,
                                 label = "",
-                                value = TRUE)
+                                value = TRUE),
+                checkboxInput(is_multi_id,
+                                label = "",
+                                value = FALSE)
             )
 
         )

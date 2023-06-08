@@ -9,4 +9,4 @@ library(grDevices)      # Capturing plots
 library(shinyAce)       # For code rendering
 library(shiny)          # Shiny framework
 library(data.table)     # Handle file reading
-library(GenomicRanges)  # Handling GRanges objects
+library(GenomicRanges)  # Handle GRanges objects

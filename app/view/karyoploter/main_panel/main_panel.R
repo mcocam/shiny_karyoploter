@@ -19,7 +19,7 @@ ui = function(id){
       div(
     class="sticky-top my-3 my-sm-0",
         navs_tab_card(
-                  height = "88vh",
+                  height = "95vh",
                   title = "Result",
                   full_screen = TRUE,
                   wrapper = card_body_fill,

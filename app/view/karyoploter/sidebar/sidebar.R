@@ -12,6 +12,7 @@ box::use(
     app/view/karyoploter/sidebar/components/genomes/genomes,
     app/view/karyoploter/sidebar/components/genomes/plot_type,
     app/view/karyoploter/sidebar/components/genomes/chromosomes,
+    app/view/karyoploter/sidebar/components/genomes/chr_labels,
 
     app/view/karyoploter/sidebar/components/panels/panels,
 
@@ -31,18 +32,19 @@ ui = function(id){
       genomes$ui(ns("genomes")),
       plot_type$ui(ns("plot_type")),
       chromosomes$ui(ns("chromosomes")),
+      chr_labels$ui(ns("chr_labels")),
 
       hr(),
 
       tabsetPanel(id = ns("user_data"),
       
         tabPanel(
-          "Markers",
+          "Add markers",
             div(class="my-3 fw-bold text-dark text-center","Markers (optional)"),
             markers$ui(ns("markers"))
         ),
         tabPanel(
-          "Plots",
+          "Add plots",
           div(class="my-3 fw-bold text-dark text-center", "Add plot"),
           panels$ui(ns("panels"))
         )
@@ -61,6 +63,7 @@ server = function(id, karyo_params, selected_genome, marker_data, plot_data){
     genomes$server("genomes")
     plot_type$server("plot_type")
     chromosomes$server("chromosomes", selected_genome)
+    chr_labels$server("chr_labels")
     panels$server("panels", plot_data)
     buttons$server("btn", karyo_params)
     markers$server("markers", marker_data)

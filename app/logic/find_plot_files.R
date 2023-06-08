@@ -31,12 +31,14 @@ find_plot_files = function(input){
             data = paste0(input_found, "data")
             valid = paste0(input_found, "valid")
             message = paste0(input_found, "message")
+            placement = paste0(input_found, "data.panel")
 
             temp = data.frame(
                 type = type,
                 data = data,
                 valid = valid,
-                message = message
+                message = message,
+                placement = placement
             )
 
             input_references = rbind(input_references, temp)

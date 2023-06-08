@@ -1617,13 +1617,13 @@
     },
     "jsonlite": {
       "Package": "jsonlite",
-      "Version": "1.8.4",
+      "Version": "1.8.5",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "methods"
       ],
-      "Hash": "a4269a09a9b865579b2635c77e572374"
+      "Hash": "3ee4d9899e4db3e976fc82b98d24a31a"
     },
     "karyoploteR": {
       "Package": "karyoploteR",
@@ -1789,13 +1789,13 @@
     },
     "matrixStats": {
       "Package": "matrixStats",
-      "Version": "0.63.0",
+      "Version": "1.0.0",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "R"
       ],
-      "Hash": "57af0c3da1f1a50680b186591c3359af"
+      "Hash": "9143629fd64335aac6a6250d1c1ed82a"
     },
     "memoise": {
       "Package": "memoise",
@@ -2417,7 +2417,7 @@
     },
     "styler": {
       "Package": "styler",
-      "Version": "1.10.0",
+      "Version": "1.10.1",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -2432,7 +2432,7 @@
         "vctrs",
         "withr"
       ],
-      "Hash": "24f7192497d696c39d3b39b2e29a039d"
+      "Hash": "b0911fdb2c682f526f6e9c131fd40a1f"
     },
     "sys": {
       "Package": "sys",
