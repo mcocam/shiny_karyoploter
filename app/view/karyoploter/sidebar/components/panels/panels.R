@@ -21,8 +21,23 @@ box::use(
 )
 
 data_text = HTML("
-<p>This section allows you to include graphics dynamically (+). Each new panel includes a new track above or below the karyotype. Spacing is managed using the <a href='https://bernatgel.github.io/karyoploter_tutorial//Tutorial/Autotrack/Autotrack.html' target='_blank'>autotrack</a> function.</p> 
-<p>In order to update the plot data, you need to click on 'Update plot data' button.</p>
+<p>This section allows you to include graphics dynamically (+). 
+Each new panel includes a new track above or below the karyotype. 
+Spacing is managed using the <a href='https://bernatgel.github.io/karyoploter_tutorial//Tutorial/Autotrack/Autotrack.html' target='_blank'>autotrack</a> function.</p> 
+<p>This section is not reactive so, in order to add plots: 
+
+  <ol>
+  
+    <li>first, click on + button below</li>
+    <li>Choose the plot type and add the CSV file</li>
+    <li>Add as many panels as needed</li>
+    <li>Finally, click update plot data</li>
+
+  </ol>
+
+Each panel will show a feedback if data has been processed or has errors.
+  
+</p>
 <p>All input data is expected to be a CSV file separated with ;.</p>
 <p>The expected data for each plot can be seen on cards.</p>
 ")
@@ -48,8 +63,9 @@ ui = function(id){
           ns("add_field"),
           style   = "border: 0px",
           label   = NULL,
-          icon("circle-plus"),
-          onclick="App.enablePanelButton()"
+          icon("circle-plus", class = "text-white"),
+          onclick="App.enablePanelButton()",
+          class = "bg-dark"
         )
       )
     )

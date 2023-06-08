@@ -4,6 +4,9 @@ box::use(
   app/view/karyoploter/karyoplot
 )
 
+# File size limit
+options(shiny.maxRequestSize = 1*1024^2)
+
 # App main theme
 karyoploter_theme = bs_theme(
   version = "5",

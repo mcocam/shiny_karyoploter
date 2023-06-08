@@ -81,7 +81,7 @@ ui = function(id){
 }
 
 #' @export
-server = function(id, marker_data){
+server = function(id, marker_data, is_multi_panel){
   moduleServer(id,function(i,o,s){
 
     ns = s$ns

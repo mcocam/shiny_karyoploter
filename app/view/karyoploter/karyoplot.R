@@ -11,7 +11,9 @@ box::use(
         HTML,
         div,
         renderUI,
-        updateActionButton
+        updateActionButton,
+        updateCheckboxInput,
+        updateRadioButtons
         ],
 
     data.table[fread],
@@ -21,7 +23,10 @@ box::use(
 
     app/logic/find_params[find_params],
     app/logic/find_plot_files[find_plot_files],
-    app/logic/validate_panel_data[validate_panel_data]
+    app/logic/validate_panel_data[validate_panel_data],
+    app/logic/find_multiplot_inputs[find_multiplot_inputs],
+
+    karyoploteR[kpAddChromosomeNames]
 )
 
 #' @export
@@ -48,7 +53,16 @@ server = function(id,karyo_params){
         argument_values = find_params(i)
 
         for (argument in names(argument_values) ){
-            params[[argument]] = unlist(i[[argument_values[[argument]]]])
+
+            if(argument == "labels.plotter"){
+                if(unlist(i[[argument_values[[argument]]]]) == FALSE){
+                    params[argument] = list(NULL)
+                }else{
+                    next
+                }
+            }else{
+                params[[argument]] = unlist(i[[argument_values[[argument]]]])
+            }
         }
 
         if(params[["plot.type"]] %in% c("3", "4", "5")){
@@ -81,10 +95,12 @@ server = function(id,karyo_params){
                     file_id = input_ref$data 
                     valid_id = input_ref$valid
                     message_id = input_ref$message
+                    placement_id = input_ref$placement
 
                     selected_type = i[[type_id]]
                     file_path = i[[file_id]]$datapath
                     is_valid = i[[valid_id]]
+                    placement = i[[placement_id]]
 
                     if(!isTruthy(file_path)){
                         o[[message_id]] = renderUI({ 
@@ -102,6 +118,7 @@ server = function(id,karyo_params){
 
                             temp_list = list(
                                 "type" = selected_type,
+                                "placement" = placement,
                                 "data" = list(data)
                             )
 
@@ -153,6 +170,27 @@ server = function(id,karyo_params){
 
     selected_genome = reactive({
         i[["sidebar-genomes-kparams_genome"]]
+    })
+
+    observe({
+        selected_type = i[["sidebar-plot_type-kparams_plot.type"]]
+        inputs = find_multiplot_inputs(i)
+        plot_inputs = find_plot_files(i)
+
+        if(selected_type %in% c("2","3")){
+            for(input in inputs){
+                updateCheckboxInput(s, input, value = TRUE)
+            }
+        }else{
+            for(input in inputs){
+                updateCheckboxInput(s, input, value = FALSE)
+            }
+            for(index in seq_along(plot_inputs)){
+                placement_id = plot_inputs[index,]$placement
+                updateRadioButtons(s, placement_id, selected = 1)
+            }
+        }
+
     })
 
     # observe({
