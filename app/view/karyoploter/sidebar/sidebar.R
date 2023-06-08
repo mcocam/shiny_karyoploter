@@ -65,7 +65,7 @@ server = function(id, karyo_params, selected_genome, marker_data, plot_data){
     chromosomes$server("chromosomes", selected_genome)
     chr_labels$server("chr_labels")
     panels$server("panels", plot_data)
-    buttons$server("btn", karyo_params)
+    buttons$server("btn", karyo_params, marker_data, plot_data)
     markers$server("markers", marker_data)
 
   })
