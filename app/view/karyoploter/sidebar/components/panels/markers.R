@@ -13,9 +13,13 @@ box::use(
     req,
     insertUI,
     removeUI,
-    HTML],
+    HTML,
+    conditionalPanel,
+    radioButtons,
+    checkboxInput],
   tools[file_ext],
-  data.table[fread]
+  data.table[fread],
+  glue[glue]
 )
 
 marker_text = HTML("Upload a text file to add <a href = 'https://bernatgel.github.io/karyoploter_tutorial//Tutorial/PlotMarkers/PlotMarkers.html' target = '_blank'>markers</a>. Please, be sure that your data is CSV separated with ';' and follows this sctructure:")
@@ -24,6 +28,8 @@ marker_text = HTML("Upload a text file to add <a href = 'https://bernatgel.githu
 #' @export
 ui = function(id){
   ns = NS(id)
+
+  is_multi_id = paste0(id, "_multi")
 
       marker_demo_table = tags$table(
         tags$thead(
@@ -73,6 +79,25 @@ ui = function(id){
                          "text/comma-separated-values,text/plain",
                          ".csv"))
                 ),
+                div(
+                conditionalPanel(
+                    condition = glue("input[['{is_multi_id}']]"),
+                    div(
+                      class = "mx-2",
+                      radioButtons(
+                        ns("marker_panel"),
+                        label = HTML("<p class='fw-bold'>Where the markers should be placed?</p>"),
+                        choices = c("Upper section" = 1, "Lower section" = 2)
+                      )
+                    )
+                )
+              ),
+              div(
+                class = "d-none",
+                checkboxInput(is_multi_id,
+                                label = "",
+                                value = FALSE)
+              ),
                 div(id = "marker_feedback")
             )
         )
@@ -102,6 +127,7 @@ server = function(id, marker_data, is_multi_panel){
           data = fread(file_path, sep=";")
 
           if(ncol(data) == 3 & all(c("chr", "x", "labels") %in% colnames(data)) ) {
+            data$position = i[["marker_panel"]]
             marker_data(data)
           }else{
             stop("Invalid file")
@@ -116,6 +142,14 @@ server = function(id, marker_data, is_multi_panel){
                   class="text-danger"))
         }
         )
+    })
+
+    observeEvent(i[["marker_panel"]],{
+      data = marker_data()
+      if(!is.null(data)){
+        data$position = i[["marker_panel"]]
+        marker_data(data)
+      }
     })
 
   })

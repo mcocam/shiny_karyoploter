@@ -172,6 +172,7 @@ server = function(id,karyo_params){
         i[["sidebar-genomes-kparams_genome"]]
     })
 
+    # Show/Hide data.panel selection based on plot type
     observe({
         selected_type = i[["sidebar-plot_type-kparams_plot.type"]]
         inputs = find_multiplot_inputs(i)
@@ -181,6 +182,7 @@ server = function(id,karyo_params){
             for(input in inputs){
                 updateCheckboxInput(s, input, value = TRUE)
             }
+            updateCheckboxInput(s, "sidebar-markers_multi", value = TRUE)
         }else{
             for(input in inputs){
                 updateCheckboxInput(s, input, value = FALSE)
@@ -189,22 +191,11 @@ server = function(id,karyo_params){
                 placement_id = plot_inputs[index,]$placement
                 updateRadioButtons(s, placement_id, selected = 1)
             }
+            updateRadioButtons(s, "sidebar-markers-marker_panel", selected = 1)
+            updateCheckboxInput(s, "sidebar-markers_multi", value = FALSE)
         }
 
     })
-
-    # observe({
-    #     plot_inputs = find_plot_files(i)
-    #     type_input_id = plot_inputs$type 
-
-    #     observeEvent(sapply(type_input_id, function(name) i[[name]]), {
-    #         updateActionButton(
-    #             s,
-    #             "sidebar-btn-update",
-    #             disabled = FALSE
-    #         )
-    #     })
-    # })
 
     sidebar$server("sidebar",karyo_params,selected_genome, marker_data, plot_data)
     main_panel$server("mainPanel",karyo_params, marker_data, plot_data)

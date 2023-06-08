@@ -248,6 +248,21 @@ server = function(id,karyo_params, marker_data, plot_data){
           # If some marker has been added
           if(!is.null(marker_data)){
 
+            data_panel_position = unique(marker_data$position)
+
+            track = data.frame(
+              r0 = 0,
+              r1 = 0
+            )
+
+            if(data_panel_position == 1){
+              track$r0 = track_up$r0
+              track$r1 = track_up$r1
+            }else if (data_panel_position == 2) {
+               track$r0 = track_down$r0
+               track$r1 = track_down$r1
+            }
+
             if(length(track) > 0){
               
               track$r0 = track$r0 * 1.7
@@ -261,6 +276,7 @@ server = function(id,karyo_params, marker_data, plot_data){
                 x=marker_data$x,
                 labels=marker_data$labels,
                 label.margin = 5,
+                data.panel = data_panel_position,
                 r1 = track$r1)
 
             }else{
@@ -270,6 +286,7 @@ server = function(id,karyo_params, marker_data, plot_data){
                 x=marker_data$x,
                 labels=marker_data$labels,
                 text.orientation = "horizontal",
+                data.panel = data_panel_position,
                 r1 = track$r1)
             }
             

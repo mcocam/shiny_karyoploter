@@ -64,7 +64,6 @@ ui = function(id){
           style   = "border: 0px",
           label   = NULL,
           icon("circle-plus", class = "text-white"),
-          onclick="App.enablePanelButton()",
           class = "bg-dark"
         )
       )
