@@ -2,7 +2,8 @@ box::use(
   shiny[
     div,
     HTML,
-    p
+    p,
+    img
   ]
 )
 
@@ -10,17 +11,22 @@ box::use(
 #' @export
 ui <- function(id){
   div( class="container-md my-5",
-    div(class = "text-center fs-2 text-black fw-bold fade-in","Welcome to Shiny karyoploteR"),
+    div(class = "text-center fs-2 text-black fw-bold","Welcome to Shiny karyoploteR"),
 
     div(class = "text-center fs-4",
         HTML("An interactive interface for 
               <a href = 'https://bernatgel.github.io/karyoploter_tutorial/', target = 'blank'>
               karyoploteR</a>")),
 
+    div(
+      class = "text-center",
+      img(class = "img-fluid", src = "../../static/img/cover.png", style = "width: 50%")
+    ),
+
     # Section
     div( class = "my-4 text-black mx-3",
       div(
-        class = "fs-4 mt-5 mb-3",
+        class = "fs-4 my-2",
         "What is Shiny karyoploteR?"
       ),
       HTML("
@@ -47,9 +53,48 @@ ui <- function(id){
         If your intention is to load large files, please use the local 
         version and modify the parameters in the main.R file
       </p>
-      "),
-      
+      ")
+    ),
+
+    div( class = "my-4 text-black mx-3",
+      div(
+        class = "fs-4 my-2",
+        "Where does the application come from??"
+      ),
+      HTML("
+      <p>
+        The application is the result of the final project of the 
+        <a 
+          href='https://www.uoc.edu/ca/estudis/masters/master-universitari-bioinformatica-bioestadistica' 
+          target = '_blank'
+        >
+          Master's Degree in Bioinformatics and Biostatistics
+        </a> (Open University of Catalonia).
+      </p>
+      <p>
+        For this reason, the application is not ready for production; rather, 
+        it is the first step, a proof of concept, for the integration of karyoploteR with Shiny
+      </p>
+      ")
+    ),
+
+    div( class = "my-4 text-black mx-3",
+      div(
+        class = "fs-4 my-2",
+        "How to use it?"
+      ),
+      HTML("
+      <p>
+        The visualization application is composed of 3 main parts: 
+        <ul>
+          <li>The ideogram</li>
+          <li>Markers</li>
+          <li>Plots</p>
+        </ul>
+      </p>
+      ")
     )
+
   )
 }
 

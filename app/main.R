@@ -40,8 +40,8 @@ ui <- function(id) {
     ),
 
     ## Get started
-    nav("Get started",
-      p("Tutorials, examples and more, much more")
+    nav("Examples",
+      p("TO DO")
     ),
 
     # Link to github repo
