@@ -30,6 +30,8 @@ ui <- function(id) {
     # Content modules
 
     ## Draw karyoploteR
+    nav("Welcome",
+    ),
     nav("karyoploteR",
       karyoplot$ui(ns("layout"))
     ),
