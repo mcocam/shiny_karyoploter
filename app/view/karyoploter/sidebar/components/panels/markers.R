@@ -17,8 +17,11 @@ box::use(
     conditionalPanel,
     radioButtons,
     checkboxInput],
+
   tools[file_ext],
+
   data.table[fread],
+
   glue[glue]
 )
 
@@ -30,6 +33,7 @@ ui = function(id){
   ns = NS(id)
 
   is_multi_id = paste0(id, "_multi")
+  label.dist_id = paste0(id,"_label.dist")
 
       marker_demo_table = tags$table(
         tags$thead(
