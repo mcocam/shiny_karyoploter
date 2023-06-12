@@ -20,7 +20,7 @@ ui <- function(id){
 
     div(
       class = "text-center",
-      img(class = "img-fluid", src = "../../static/img/cover.png", style = "width: 50%")
+      img(class = "img-fluid", src = "https://github.com/mcocam/shiny_karyoploter/blob/master/app/static/img/cover.png", style = "width: 50%")
     ),
 
     # Section
