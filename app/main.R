@@ -1,11 +1,13 @@
 box::use(
-  shiny[moduleServer, NS,a,renderPlot,plotOutput,reactive,p,callModule],
-  bslib[page_navbar,nav,bs_theme,font_google],
-  app/view/karyoploter/karyoplot
+  shiny[moduleServer, NS,a,renderPlot,reactive, p, HTML, div],
+  bslib[page_navbar,nav,bs_theme,font_google, nav_item],
+  
+  app/view/karyoploter/karyoplot,
+  app/view/home/welcome
 )
 
 # File size limit
-options(shiny.maxRequestSize = 1*1024^2)
+options(shiny.maxRequestSize = 1 * 1024^2)
 
 # App main theme
 karyoploter_theme = bs_theme(
@@ -31,6 +33,7 @@ ui <- function(id) {
 
     ## Draw karyoploteR
     nav("Welcome",
+      welcome$ui(ns("welcome"))
     ),
     nav("karyoploteR",
       karyoplot$ui(ns("layout"))
@@ -39,8 +42,15 @@ ui <- function(id) {
     ## Get started
     nav("Get started",
       p("Tutorials, examples and more, much more")
-    )
+    ),
 
+    # Link to github repo
+    nav_item(
+      class = "ms-md-auto mx-2",
+      style = "font-size: 1.1rem; padding: 0; margin: 0",
+      HTML("<a href = 'https://github.com/mcocam/shiny_karyoploter' target = '_blank'>
+              <i class='fa-brands fa-github'></i></a>")
+      )
   )
 }
 
