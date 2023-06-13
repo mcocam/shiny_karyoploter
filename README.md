@@ -25,16 +25,7 @@ shiny::runApp()
 Some problems have been detected when trying to set up the app in Linux system. Please, be sure that the following dependencies are in your system. You can install them all at once with the following command:
 
 ```
-sudo apt install \
- libcairo2-dev \
- libxt-dev \
- libbz2-dev \
- libcurl4-gnutls-dev \
- gfortran \
- libblas-dev \ 
- liblapack-dev \
- libgsl0-dev \
- libxml2-dev \
+sudo apt-get install -y libcairo2-dev libxt-dev libbz2-dev libcurl4-gnutls-dev gfortran libblas-dev liblapack-dev libgsl-dev libxml2-dev
 ```
 
 # Deployment
