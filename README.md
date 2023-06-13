@@ -22,49 +22,14 @@ shiny::runApp()
 
 ## Running in linux system
 
-Some problems have been detected when trying to set up the app in Linux system. The following ependencies are missed: cairo.h, Intrinsic.h, bzlib.h, curl.h, gfortran, liblas, libgs.
-
-In order to fix cairo.h the following packages should be installed:
+Some problems have been detected when trying to set up the app in Linux system. Please, be sure that the following dependencies are in your system. You can install them all at once with the following command:
 
 ```
-sudo apt install libcairo2-dev
+sudo apt-get install -y libcairo2-dev libxt-dev libbz2-dev libcurl4-gnutls-dev gfortran libblas-dev liblapack-dev libgsl-dev libxml2-dev
 ```
-
-For Intrinsic.h:
-
-```
-sudo apt-get install libxt-dev
-```
-
-For bzlib.h:
-
-```
-sudo apt install libbz2-dev
-```
-
-For curl.h:
-
-```
-sudo apt install libcurl4-gnutls-dev
-```
-
-For gfortran:
-
-```
-sudo apt-get install gfortran
-```
-
-```
-sudo apt-get install libblas-dev liblapack-dev
-```
-
-```
-sudo apt-get install libgsl0-dev
-```
-
-```
-sudo apt-get install libxml2-dev
-```
-
 
 # Deployment
+
+Like any other shiny application, the code can be deployed automatically to shinyapps site.
+Also, docker can be used. As you can see, there is a docker-compose file in the project.
+The execution of docker file, deploy the application and makes available through port 80.
