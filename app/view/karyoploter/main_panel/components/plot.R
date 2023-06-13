@@ -198,7 +198,7 @@ server = function(id,karyo_params, marker_data, plot_data){
                   "plot_bar" = {
                     kpBars(
                       plot,
-                      chr = chr, 
+                      chr = chr,
                       data.panel = placement,
                       x0 = filtered_data$x0,
                       x1 = filtered_data$x1,
