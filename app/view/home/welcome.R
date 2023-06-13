@@ -88,8 +88,11 @@ ui <- function(id){
         The visualization application is composed of 3 main parts: 
         <ul>
           <li>The ideogram</li>
+          <img href = 'https://github.com/mcocam/shiny_karyoploter/blob/master/app/static/img/karyoploter_1.png?raw=true'></img>
           <li>Markers</li>
+          <img href = 'https://github.com/mcocam/shiny_karyoploter/blob/master/app/static/img/karyoploter_2.png?raw=true'></img>
           <li>Plots</p>
+          <img href = 'https://github.com/mcocam/shiny_karyoploter/blob/master/app/static/img/karyoploter_3.png?raw=true'></img>
         </ul>
       </p>
       ")
