@@ -25,7 +25,7 @@ shiny::runApp()
 Some problems have been detected when trying to set up the app in Linux system. Please, be sure that the following dependencies are in your system. You can install them all at once with the following command:
 
 ```
-sudo apt-get install -y libcairo2-dev libxt-dev libbz2-dev libcurl4-gnutls-dev gfortran libblas-dev liblapack-dev libgsl-dev libxml2-dev
+sudo apt-get install -y libcairo2-dev libxt-dev libbz2-dev libcurl4-gnutls-dev gfortran libblas-dev liblapack-dev libgsl-dev libxml2-dev libssl-dev
 ```
 
 # Deployment
@@ -45,7 +45,7 @@ FROM r-base:latest
 
 # Update the linux docker
 RUN apt-get update
-RUN apt-get install -y libcairo2-dev libxt-dev libbz2-dev libcurl4-gnutls-dev gfortran libblas-dev liblapack-dev libgsl-dev libxml2-dev
+RUN apt-get install -y libcairo2-dev libxt-dev libbz2-dev libcurl4-gnutls-dev gfortran libblas-dev liblapack-dev libgsl-dev libxml2-dev libssl-dev
 
 # Make sure renv is installed
 RUN R -e 'install.packages("renv")'
@@ -121,3 +121,18 @@ rsconnect/
 # Ignore renv folder
 renv/
 ```
+
+Once the files have been placed, you can build the image and run the container. For example:
+
+Set terminal to the main folder of Dockerfile and run:
+```
+docker build . -t karyoploter
+```
+Notice the command builds an image of the project with tag name 'karyoploter'.
+
+Once the image is done (first time takes a while), run it as a container (it takes ~1 minute to fully set up)
+```
+docker run -d -p 80:80 karyoploter
+```
+
+Now, you can acces the app via: http://[your_ip]
