@@ -265,15 +265,15 @@ make_plot_code = function(karyo_params, marker_data, plot_data){
         if (karyo_params_v[["plot.type"]] %in% c("3", "4", "5")){
 
            marker_data_str = glue("
-            marker_data = your_marker_data #Replace it with your data or reader function
+          marker_data = your_marker_data #Replace it with your data or reader function
 
-            kpPlotMarkers(
-                    kp,
-                    chr=marker_data$chr,
-                    x=marker_data$x,
-                    labels=marker_data$labels,
-                    text.orientation = 'horizontal',
-                    data.panel = {data_panel_position})
+          kpPlotMarkers(
+                  kp,
+                  chr=marker_data$chr,
+                  x=marker_data$x,
+                  labels=marker_data$labels,
+                  text.orientation = 'horizontal',
+                  data.panel = {data_panel_position})
           ")
 
         }else{
