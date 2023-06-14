@@ -34,13 +34,6 @@ make_plot_code = function(karyo_params, marker_data, plot_data){
     marker_data_v = marker_data()
     plot_data_v = plot_data()
 
-    # Set variables
-    ## Markers 
-    marker_data_str = ""
-    if(!is.null(marker_data_v)){
-        marker_data_str = "marker_data = your_marker_data #Replace it with your data"
-    }
-
     ## Panels
     plot_data_str = ""
     if(!is.null(plot_data_v)){
@@ -177,7 +170,7 @@ make_plot_code = function(karyo_params, marker_data, plot_data){
                       r0 = {r0},
                       r1 = {r1}
                     )
-                    }}
+                    
                     ")
                 },
                 "plot_lines" = {
@@ -261,20 +254,62 @@ make_plot_code = function(karyo_params, marker_data, plot_data){
 
     arguments_code_string = substr(arguments_code_string, 1, nchar(arguments_code_string) - 2)
 
+
+    # Set variables
+    ## Markers 
+    marker_data_str = ""
+    if(!is.null(marker_data_v)){
+
+      data_panel_position = unique(marker_data_v$position)
+
+        if (karyo_params_v[["plot.type"]] %in% c("3", "4", "5")){
+
+           marker_data_str = glue("
+            marker_data = your_marker_data #Replace it with your data or reader function
+
+            kpPlotMarkers(
+                    kp,
+                    chr=marker_data$chr,
+                    x=marker_data$x,
+                    labels=marker_data$labels,
+                    text.orientation = 'horizontal',
+                    data.panel = {data_panel_position})
+          ")
+
+        }else{
+
+          marker_data_str = glue("
+            marker_data = your_marker_data #Replace it with your data or reader function
+
+            kpPlotMarkers(
+                    kp,
+                    chr=marker_data$chr,
+                    x=marker_data$x,
+                    labels=marker_data$labels,
+                    data.panel = {data_panel_position})
+          ")
+
+        }
+
+       
+    }
+
+
+
     code = glue("
     # Code generator
     ## Please note that the user-entered data cannot be fully replicated
 
-    # Markers if any
-    {marker_data_str}
-
     # Plot code (ideogram)
-    kp = plotKaryoplot({arguments_code_string})
+    kp = plotKaryotype({arguments_code_string})
 
     # Plots if any
     ## Please note that the order of panels (left sidebar) 
     ## is from bottom to top. Hence, last panel becomes 1 and the first n
     {plot_data_str}
+
+    # Markers if any
+    {marker_data_str}
     
     ")
 

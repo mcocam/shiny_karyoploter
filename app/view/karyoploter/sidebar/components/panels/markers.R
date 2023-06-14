@@ -41,7 +41,7 @@ ui = function(id){
             tags$tr(
                 tags$th(style = "text-transform: none;font-weight: bold","chr"),
                 tags$th(style = "text-transform: none;font-weight: bold","x"),
-                tags$th(style = "text-transform: none;font-weight: bold","label")
+                tags$th(style = "text-transform: none;font-weight: bold","labels")
             )
         ),
         tags$tbody(
