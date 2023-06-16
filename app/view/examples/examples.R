@@ -56,7 +56,7 @@ ui <- function(id){
     div( class = "my-4 text-black mx-3",
       div(
         class = "fs-4 my-2",
-        "Mix plot with bars, points, coverage and markers (Homo Sapiens)"
+        "Mix plot with bars, points, coverage and markers (hg38 Homo Sapiens)"
       ),
       div(
         class = "img-fluid",
