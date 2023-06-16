@@ -25,7 +25,7 @@ ui <- function(id) {
 
     # Theme and styles
     theme = karyoploter_theme,
-    title = a(href="/",
+    title = a(href="https://mcocam.shinyapps.io/shiny_karyoploter/",
               style="text-decoration: none;color:black",
               "KaryoploteR"),
     inverse = FALSE,
