@@ -30,8 +30,6 @@ box::use(
       kpPlotManhattan
       ],
   GenomicRanges[makeGRangesFromDataFrame],
-
-  app/logic/normalize_data[normalize_y],
   app/logic/get_min_max_y[get_min_max_y]
 )
 
