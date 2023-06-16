@@ -1,6 +1,6 @@
 box::use(
   shiny[moduleServer, NS,a,renderPlot,reactive, p, HTML, div],
-  bslib[page_navbar,nav,bs_theme,font_google, nav_item],
+  bslib[page_navbar,nav_panel,bs_theme,font_google, nav_item],
   
   app/view/karyoploter/karyoplot,
   app/view/home/welcome
@@ -32,15 +32,15 @@ ui <- function(id) {
     # Content modules
 
     ## Draw karyoploteR
-    nav("Welcome",
+    nav_panel("Welcome",
       welcome$ui(ns("welcome"))
     ),
-    nav("karyoploteR",
+    nav_panel("karyoploteR",
       karyoplot$ui(ns("layout"))
     ),
 
     ## Get started
-    nav("Examples",
+    nav_panel("Examples",
       p("TO DO")
     ),
 

@@ -5,7 +5,7 @@ box::use(
     mainPanel,
     div],
 
-    bslib[card,navs_tab_card,nav,card_body_fill],
+    bslib[card,navset_card_tab,nav_panel,card_body],
 
     app/view/karyoploter/main_panel/components/plot,
     app/view/karyoploter/main_panel/components/code
@@ -18,16 +18,16 @@ ui = function(id){
     mainPanel(
       div(
     class="sticky-top my-3 my-sm-0",
-        navs_tab_card(
+        navset_card_tab(
                   height = "95vh",
                   title = "Result",
                   full_screen = TRUE,
-                  wrapper = card_body_fill,
-                  nav(
+                  wrapper = card_body,
+                  nav_panel(
                     "Plot",
                     plot$ui(ns("plot"))
                   ),
-                  nav(
+                  nav_panel(
                     "Code",
                     code$ui(ns("code"))
                   )

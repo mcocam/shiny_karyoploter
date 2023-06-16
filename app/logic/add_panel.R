@@ -18,7 +18,7 @@ box::use(
         HTML],
     bslib[
         card,
-        card_body_fill],
+        card_body],
     htmlTable[htmlTable],
     shiny[tags, HTML],
     glue[glue]
