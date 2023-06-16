@@ -3,11 +3,12 @@ box::use(
   bslib[page_navbar,nav_panel,bs_theme,font_google, nav_item],
   
   app/view/karyoploter/karyoplot,
-  app/view/home/welcome
+  app/view/welcome/welcome,
+  app/view/examples/examples
 )
 
 # File size limit
-options(shiny.maxRequestSize = 1 * 1024^2)
+options(shiny.maxRequestSize = 2 * 1024^2)
 
 # App main theme
 karyoploter_theme = bs_theme(
@@ -41,7 +42,7 @@ ui <- function(id) {
 
     ## Get started
     nav_panel("Examples",
-      p("TO DO")
+      examples$ui(ns("examples"))
     ),
 
     # Link to github repo
