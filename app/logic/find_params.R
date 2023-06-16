@@ -5,7 +5,6 @@ box::use(
 
 
 #' Find input user parameters for plotKaryotype() function
-#' Default expression: kparams52
 #' @param input Shiny server object
 #' @return A list with matched param name and the input name reference
 #' @export 

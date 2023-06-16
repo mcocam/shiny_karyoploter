@@ -18,6 +18,11 @@ box::use(
 )
 
 
+#' Given the user inputs and selections, the function returns the parsed code to generate the karyoplot
+#' @param karyo_params kpPlotKaryotype params
+#' @param marker_data kpPlotMarkers params
+#' @param plot_data plot data for kpPlot... available functions
+#' @return A list with matched param name and the input name reference
 #' @export 
 make_plot_code = function(karyo_params, marker_data, plot_data){
 

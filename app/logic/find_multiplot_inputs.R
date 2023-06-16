@@ -3,8 +3,7 @@ box::use(
     stringr[str_match_all]
 )
 
-#' Find input user parameters for plotKaryotype() function
-#' Default expression: kparams52
+#' Find dynamically generated input files for plots
 #' @param input Shiny server object
 #' @return A list with matched param name and the input name reference
 #' @export 

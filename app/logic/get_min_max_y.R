@@ -4,7 +4,10 @@ box::use(
 )
 
 
-#' @export
+#' Compute the min and max values for value variable of the dynamic panel plots
+#' @param plot_data DataFrame parsed from user data
+#' @return A list with matched param name and the input name reference
+#' @export 
 get_min_max_y = function(plot_data){
 
     min_max_vector = c(0,1)

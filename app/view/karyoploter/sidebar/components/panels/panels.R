@@ -56,7 +56,11 @@ ui = function(id){
           )
         )
       ),
+
+      # Dynamic panel area
       div(id="custom_areas"),
+
+      # Add new panel button
       div(
         class="text-end",
         actionButton(
@@ -77,11 +81,15 @@ server = function(id, plot_data){
 
     ns = s$ns
 
+    # Inital state of dynamic panel count
     panel_count = reactiveValues(values = 0)
     panel_names = reactiveValues(names = character(0))
 
+    # Handle new panel creation
     observeEvent(i$add_field,{
       id = paste0("panel_",panel_count$values)
+
+      # Add
       insertUI(
         selector = "#custom_areas",
         ui = add_panel(ns(id))
@@ -89,6 +97,7 @@ server = function(id, plot_data){
       panel_count$values = panel_count$values+1
       panel_names$names = c(panel_names$names,ns(id))
 
+      # Remove
       observeEvent(i[[id]],{
         
         target_id = paste0(id,"_valid")

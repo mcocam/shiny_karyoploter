@@ -35,6 +35,7 @@ ui = function(id){
   is_multi_id = paste0(id, "_multi")
   label.dist_id = paste0(id,"_label.dist")
 
+      # Marker HTML demo table
       marker_demo_table = tags$table(
         tags$thead(
             class = "text-center fw-bold text-lowercase",
@@ -65,6 +66,7 @@ ui = function(id){
         class = "table"
     )
 
+    # marker input
     div(
         id = id,
         class = "card my-3",
@@ -115,10 +117,12 @@ server = function(id, marker_data, is_multi_panel){
 
     ns = s$ns
 
+    # Handle new marker file event
     observeEvent(i$marker_file,{
       req(i$marker_file)
       removeUI("#marker_feedback > p", multiple = TRUE)
 
+      # Evaluate if correct
       tryCatch(
         {
           file_path = i$marker_file$datapath

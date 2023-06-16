@@ -1,6 +1,10 @@
 
 
-#' @export
+#' Evaluates if the data uploaded by the user is correct
+#' @param plot_type selected plot type
+#' @param plot_data uploaded plot data
+#' @return A list with matched param name and the input name reference
+#' @export 
 validate_panel_data = function(plot_type, plot_data){
 
     is_valid = FALSE 

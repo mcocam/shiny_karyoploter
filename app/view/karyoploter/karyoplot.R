@@ -34,6 +34,7 @@ ui = function(id){
 
     ns = NS(id)
 
+    ## Karyoplot submodules (sidebar, main panel)
     sidebarLayout(
         sidebar = sidebar$ui(ns("sidebar")),
         mainPanel = main_panel$ui(ns("mainPanel"))
@@ -45,7 +46,7 @@ ui = function(id){
 server = function(id,karyo_params){
     moduleServer(id,function(i,o,s){
 
-    # Base plotKaryotype params
+    # Base plotKaryotype params ()
     karyo_params = reactive({
 
         params = list()
@@ -80,6 +81,7 @@ server = function(id,karyo_params){
 
         plot_data(NULL)
 
+        # Handle user input data
         tryCatch({
 
             input_references = find_plot_files(i)

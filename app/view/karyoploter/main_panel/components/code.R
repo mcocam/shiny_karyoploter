@@ -16,6 +16,7 @@ box::use(
 ui = function(id){
     ns = NS(id)
 
+    # UI code interface
     aceEditor(
         outputId = ns("karyo_code"), 
         value="", 
@@ -32,10 +33,12 @@ ui = function(id){
 server = function(id,karyo_params, marker_data, plot_data){
   moduleServer(id,function(i,o,s){
 
+    # Do code reactively
     code = reactive({
         code = make_plot_code(karyo_params, marker_data, plot_data)
     })
 
+    # Update the code when changes detected
     observe({
         updateAceEditor(s, "karyo_code", value = code())
     })
