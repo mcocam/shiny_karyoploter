@@ -20,7 +20,7 @@ ui <- function(id){
 
     div(
       class = "text-center",
-      img(class = "img-fluid", src = "https://github.com/mcocam/shiny_karyoploter/blob/master/app/static/img/cover.png?raw=true", style = "width: 50%")
+      img(class = "img-fluid", src = "https://github.com/mcocam/shiny_karyoploter/blob/master/app/static/img/samples/hg38_manhattan.png?raw=true", style = "width: 50vw")
     ),
 
     # Section
@@ -88,11 +88,11 @@ ui <- function(id){
         The visualization application is composed of 3 main parts: 
         <ul>
           <li>The ideogram</li>
-          <img style = 'width: 20rem' class = 'rounded mt-1 mb-3 mx-5' src = 'https://github.com/mcocam/shiny_karyoploter/blob/master/app/static/img/karyoploter_1.png?raw=true'></img>
+          <img style = 'width: 30vw' class = 'rounded mt-1 mb-3 mx-5' src = 'https://github.com/mcocam/shiny_karyoploter/blob/master/app/static/img/karyoploter_1.png?raw=true'></img>
           <li>Markers</li>
-          <img style = 'width: 20rem' class = 'rounded  mt-1 mb-3 mx-5' src = 'https://github.com/mcocam/shiny_karyoploter/blob/master/app/static/img/karyoploter_2.png?raw=true'></img>
+          <img style = 'width: 30vw' class = 'rounded  mt-1 mb-3 mx-5' src = 'https://github.com/mcocam/shiny_karyoploter/blob/master/app/static/img/karyoploter_2.png?raw=true'></img>
           <li>Plots</p>
-          <img style = 'width: 30rem' class = 'rounded  mt-1 mb-3 mx-5' src = 'https://github.com/mcocam/shiny_karyoploter/blob/master/app/static/img/karyoploter_3.png?raw=true'></img>
+          <img style = 'width: 40vw' class = 'rounded  mt-1 mb-3 mx-5' src = 'https://github.com/mcocam/shiny_karyoploter/blob/master/app/static/img/karyoploter_3.png?raw=true'></img>
         </ul>
       </p>
       <p>
