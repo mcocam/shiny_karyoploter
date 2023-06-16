@@ -180,13 +180,13 @@
     },
     "BiocManager": {
       "Package": "BiocManager",
-      "Version": "1.30.20",
+      "Version": "1.30.21",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "utils"
       ],
-      "Hash": "a7fca16a50b6ef7771b49d636dd54b57"
+      "Hash": "be203e7eea75514bc1a41c1de39a9bb9"
     },
     "BiocParallel": {
       "Package": "BiocParallel",
@@ -496,17 +496,17 @@
     },
     "MatrixGenerics": {
       "Package": "MatrixGenerics",
-      "Version": "1.12.0",
+      "Version": "1.12.2",
       "Source": "Bioconductor",
       "git_url": "https://git.bioconductor.org/packages/MatrixGenerics",
       "git_branch": "RELEASE_3_17",
-      "git_last_commit": "442fde2",
-      "git_last_commit_date": "2023-04-25",
+      "git_last_commit": "29f77e7",
+      "git_last_commit_date": "2023-06-09",
       "Requirements": [
         "matrixStats",
         "methods"
       ],
-      "Hash": "9f9813ce7b2adab14337f5516e337b65"
+      "Hash": "62f2e21697e9aeed7bcb3f482ac25dd7"
     },
     "ProtGenerics": {
       "Package": "ProtGenerics",
@@ -716,12 +716,12 @@
     },
     "SummarizedExperiment": {
       "Package": "SummarizedExperiment",
-      "Version": "1.30.1",
+      "Version": "1.30.2",
       "Source": "Bioconductor",
       "git_url": "https://git.bioconductor.org/packages/SummarizedExperiment",
       "git_branch": "RELEASE_3_17",
-      "git_last_commit": "d7b3ada",
-      "git_last_commit_date": "2023-04-30",
+      "git_last_commit": "5d6a020",
+      "git_last_commit_date": "2023-06-05",
       "Requirements": [
         "Biobase",
         "BiocGenerics",
@@ -739,7 +739,7 @@
         "tools",
         "utils"
       ],
-      "Hash": "3c5f6bad810c9950abee035fabaa0fdc"
+      "Hash": "6af56fbcb57deb9b094a352beee9a202"
     },
     "VariantAnnotation": {
       "Package": "VariantAnnotation",
@@ -865,12 +865,12 @@
     },
     "biomaRt": {
       "Package": "biomaRt",
-      "Version": "2.56.0",
+      "Version": "2.56.1",
       "Source": "Bioconductor",
       "git_url": "https://git.bioconductor.org/packages/biomaRt",
       "git_branch": "RELEASE_3_17",
-      "git_last_commit": "91ca89e",
-      "git_last_commit_date": "2023-04-25",
+      "git_last_commit": "dd7710f",
+      "git_last_commit_date": "2023-06-09",
       "Requirements": [
         "AnnotationDbi",
         "BiocFileCache",
@@ -884,7 +884,7 @@
         "utils",
         "xml2"
       ],
-      "Hash": "51728b7b82b32decee5d5925c3965c06"
+      "Hash": "78ac2cc5e45538a556d9866e6f700e40"
     },
     "biovizBase": {
       "Package": "biovizBase",
@@ -984,7 +984,7 @@
     },
     "bslib": {
       "Package": "bslib",
-      "Version": "0.4.2",
+      "Version": "0.5.0",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -1000,7 +1000,7 @@
         "rlang",
         "sass"
       ],
-      "Hash": "a7fbf03946ad741129dc81098722fca1"
+      "Hash": "1b117970533deb6d4e992c1b34e9d905"
     },
     "cachem": {
       "Package": "cachem",
@@ -1125,13 +1125,13 @@
     },
     "curl": {
       "Package": "curl",
-      "Version": "5.0.0",
+      "Version": "5.0.1",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "R"
       ],
-      "Hash": "e4f97056611e8e6b8b852d13b7400cf1"
+      "Hash": "2118af9cb164c8d2dddc7b89eaf732d9"
     },
     "cyclocomp": {
       "Package": "cyclocomp",
@@ -2443,7 +2443,7 @@
     },
     "testthat": {
       "Package": "testthat",
-      "Version": "3.1.8",
+      "Version": "3.1.9",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -2469,7 +2469,7 @@
         "waldo",
         "withr"
       ],
-      "Hash": "e0eded5dd915510f8e0d6e6277506203"
+      "Hash": "bcc48d6c50770b435c655954e45672c1"
     },
     "tibble": {
       "Package": "tibble",
@@ -2551,7 +2551,7 @@
     },
     "vctrs": {
       "Package": "vctrs",
-      "Version": "0.6.2",
+      "Version": "0.6.3",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -2561,7 +2561,7 @@
         "lifecycle",
         "rlang"
       ],
-      "Hash": "a745bda7aff4734c17294bb41d4e4607"
+      "Hash": "d0ef2856b83dc33ea6e255caf6229ee2"
     },
     "viridis": {
       "Package": "viridis",
