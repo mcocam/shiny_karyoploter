@@ -24,9 +24,13 @@ box::use(
     glue[glue]
 )
 
-#' @export
+#' Generates a new panel ready to be inserted on shiny
+#' @param id Shiny server id
+#' @return HTML bundle to be inserted in the UI
+#' @export 
 add_panel = function(id){
 
+    # Plot types available
     panel_type_choices = c(
         "Bars" = "plot_bar",
         "Coverage" = "plot_coverage",
@@ -36,6 +40,7 @@ add_panel = function(id){
         "Points" = "plot_points"
     )
 
+    # Data description depending on plot type selection
     panel_type_messages = c(
         "bars" = "
                 <p>The plot function is 
@@ -244,6 +249,7 @@ add_panel = function(id){
         "
     )
 
+    # IDs for components
     type_selector = paste0(id, "_type")
     data_selector = paste0(id, "_data")
     is_valid_panel = paste0(id, "_valid")
@@ -252,6 +258,7 @@ add_panel = function(id){
     panel_position_id = paste0(id, "_data.panel")
     conditional_id = gsub("app-layout-sidebar-panels-","",type_selector)
 
+    # HTML bundle to be RETURNED
     div(
         id = id,
         class = "card my-2",

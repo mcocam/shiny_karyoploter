@@ -26,6 +26,8 @@ ui = function(id){
 
   ns = NS(id)
 
+  #Sidebar component UI
+
     sidebarPanel(
       class = "mb-3",
       div(class="my-3 fw-bold text-dark text-center","Ideogram options"),
@@ -60,12 +62,27 @@ ui = function(id){
 server = function(id, karyo_params, selected_genome, marker_data, plot_data){
   moduleServer(id, function(i, o, s) {
 
+    # Sidebar server logic
+
+    # Selected genome
     genomes$server("genomes")
+
+    # Karyoplot type
     plot_type$server("plot_type")
+
+    # Selected chromosomes
     chromosomes$server("chromosomes", selected_genome)
+
+    # Select if display chromosome labels or not
     chr_labels$server("chr_labels")
+
+    # Dynamic panels
     panels$server("panels", plot_data)
+
+    # Footer buttons
     buttons$server("btn", karyo_params, marker_data, plot_data)
+
+    # Handle marker input
     markers$server("markers", marker_data)
 
   })

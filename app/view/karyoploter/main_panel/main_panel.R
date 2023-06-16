@@ -15,6 +15,7 @@ box::use(
 ui = function(id){
   ns = NS(id)
 
+    # Main plot area
     mainPanel(
       div(
     class="sticky-top my-3 my-sm-0",
@@ -41,7 +42,12 @@ ui = function(id){
 server = function(id,karyo_params, marker_data, plot_data){
   moduleServer(id,function(i,o,s){
 
+    # Plot server logic
+
+    ## Render plot
     plot$server("plot",karyo_params, marker_data, plot_data)
+
+    ## Do the code
     code$server("code",karyo_params, marker_data, plot_data)
 
   })

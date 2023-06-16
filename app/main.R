@@ -32,15 +32,17 @@ ui <- function(id) {
 
     # Content modules
 
-    ## Draw karyoploteR
+    ## Welcome module
     nav_panel("Welcome",
       welcome$ui(ns("welcome"))
     ),
+
+    ## karyoploteR App
     nav_panel("karyoploteR",
       karyoplot$ui(ns("layout"))
     ),
 
-    ## Get started
+    ## Examples
     nav_panel("Examples",
       examples$ui(ns("examples"))
     ),
@@ -59,6 +61,7 @@ ui <- function(id) {
 server <- function(id) {
   moduleServer(id, function(i, o, s) {
 
+    ## Packed server logic (karyoploteR module)
     karyoplot$server("layout")
 
   })

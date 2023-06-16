@@ -4,7 +4,7 @@ box::use(
 )
 
 
-#' Find the dynamic input files from plot section
+#' Find the the plot type of dynamic panels
 #' @param input Shiny server object
 #' @return A dataframe with the input references. Columns: (1) type, (2) file
 #' @export
