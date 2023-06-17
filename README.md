@@ -38,6 +38,8 @@ The first and most simple alternative is to dockerize the application. Please no
 Here is the Dockerfile code that deploys the application via port 80. You need to place Docerfile outside shiny_karyoploter
 folder. If you change folder name or if you want to change the exposed port, feel free to change the configuration accordingly.
 
+Also, a ready to run docker image can be found on: <a href = 'https://hub.docker.com/r/marccocamoreno/shiny_karyoploter' target = '_blank'>Docker hub</a>
+
 **Dockerfile**
 ```
 # Get last R version available
