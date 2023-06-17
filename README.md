@@ -12,6 +12,7 @@ First, download the project and open it with code editor. Be sure that the root 
 
 Then run 
 ```
+renv::activate()
 renv::install()
 ```
   
