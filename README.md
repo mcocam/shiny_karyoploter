@@ -137,5 +137,9 @@ Once the image is done (first time takes a while), run it as a container (it tak
 ```
 docker run -d -p 80:80 karyoploter
 ```
+Also, prebuild image of the app is available, so it is also valid:
+```
+docker run -d -p 80:80 marccocamoreno/shiny_karyoploter
+```
 
 Now, you can acces the app via: http://[your_ip]
