@@ -142,4 +142,4 @@ Also, prebuild image of the app is available, so it is also valid:
 docker run -d -p 80:80 marccocamoreno/shiny_karyoploter
 ```
 
-Now, you can acces the app via: http://[your_ip]
+Now, you can access the app via: http://[your_ip]
